@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#292929</color>
+    <color name="colorPrimaryDark">#292929</color>
+    <color name="colorAccent">#402B7F</color>
+    <color name="searchLayout">#0091EA</color>
+    <color name="textColor">#FFF</color>
+    <color name="dateColor">#424242</color>
+    <color name="colorSearchBackground">#333333</color>
+    <color name="colorHint">#7B7B7B</color>
+</resources>
