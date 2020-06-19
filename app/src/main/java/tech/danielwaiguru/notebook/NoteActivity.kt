@@ -12,6 +12,9 @@ import kotlinx.android.synthetic.main.activity_note.*
 class NoteActivity : AppCompatActivity() {
     private lateinit var noteRecyclerView: RecyclerView
     private lateinit var noteViewModel: NoteViewModel
+    companion object{
+        const val NOTE_REQUEST_CODE = 1
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_note)
@@ -28,7 +31,8 @@ class NoteActivity : AppCompatActivity() {
         })
 
         fabAddNote.setOnClickListener {
-            startActivity(Intent(this, CreateNoteActivity::class.java))
+            val intent = Intent(this, CreateNoteActivity::class.java)
+            startActivityForResult(intent, NOTE_REQUEST_CODE)
         }
     }
 }
