@@ -8,10 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import tech.danielwaiguru.notebook.database.Note
 
 class NoteAdapter(): RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
-    private var notes = emptyList<Note>() //Cached copy of words
+    private var notes = emptyList<Note>() //Cached copy of notes
     inner class NoteViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        val textViewTitle: TextView = itemView.findViewById<TextView>(R.id.textViewTitle)
-        val textViewNoteText: TextView = itemView.findViewById<TextView>(R.id.textViewNote)
+        val textViewTitle: TextView = itemView.findViewById(R.id.textViewTitle)
+        val textViewNoteText: TextView = itemView.findViewById(R.id.textViewNote)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
@@ -31,5 +31,6 @@ class NoteAdapter(): RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
     }
     internal fun setNotes(notes: List<Note>){
         this.notes = notes
+        notifyDataSetChanged()
     }
 }

@@ -9,8 +9,8 @@ import tech.danielwaiguru.notebook.database.Note
 import tech.danielwaiguru.notebook.database.NoteDatabase
 import tech.danielwaiguru.notebook.database.NoteRepository
 
-class CreateNoteViewModel(private var noteRepository: NoteRepository, application: Application): AndroidViewModel(application) {
-    private val allNotes: LiveData<List<Note>>
+class NoteViewModel(private var noteRepository: NoteRepository, application: Application): AndroidViewModel(application) {
+    val allNotes: LiveData<List<Note>>
     init {
         val noteDao = NoteDatabase.getInstance(application).noteDao()
         noteRepository = NoteRepository(noteDao)
