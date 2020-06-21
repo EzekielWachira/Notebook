@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import tech.danielwaiguru.notebook.database.Note
 
-class NoteAdapter(): RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
+class NoteAdapter: RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
     private var notes = emptyList<Note>() //Cached copy of notes
     inner class NoteViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val textViewTitle: TextView = itemView.findViewById(R.id.textViewTitle)

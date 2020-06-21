@@ -1,13 +1,22 @@
 package tech.danielwaiguru.notebook
 
+import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.icu.text.MessageFormat.format
 import android.os.Bundle
+import android.text.format.DateFormat.format
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_note.*
+import kotlinx.android.synthetic.main.note_item_view_holder.*
+import tech.danielwaiguru.notebook.database.Note
+import java.lang.String.format
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.*
 
 class NoteActivity : AppCompatActivity() {
     private lateinit var noteRecyclerView: RecyclerView
@@ -26,6 +35,9 @@ class NoteActivity : AppCompatActivity() {
          * Get a new or existing viewmodel
          */
         noteViewModel = ViewModelProvider(this).get(NoteViewModel::class.java)
+        /**
+         * adding an observer to the live data
+         */
         noteViewModel.allNotes.observe(this, Observer {note->
             note?.let { noteAdapter.setNotes(it) }
         })
@@ -33,6 +45,17 @@ class NoteActivity : AppCompatActivity() {
         fabAddNote.setOnClickListener {
             val intent = Intent(this, CreateNoteActivity::class.java)
             startActivityForResult(intent, NOTE_REQUEST_CODE)
+        }
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == NOTE_REQUEST_CODE && resultCode == Activity.RESULT_OK){
+            val title:String = data?.getStringExtra(CreateNoteActivity.NOTE_TITLE)!!
+            val text:String = data.getStringExtra(CreateNoteActivity.NOTE_TEXT)!!
+            val note = Note(0, title, text)
+            noteViewModel.insert(note)
         }
     }
 }

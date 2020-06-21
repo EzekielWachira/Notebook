@@ -9,7 +9,7 @@ interface NoteDao {
      * function to insert a note
      */
     @Insert
-    suspend fun insertNote(note: Note)
+    suspend fun insertNote(note: Note): Long
     /**
      * function to update a note
      */

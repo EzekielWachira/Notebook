@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="6dp"
     app:cardElevation="10dp"
-    app:cardUseCompatPadding="true">
+    android:background="@color/colorSearchBackground"
+    android:layout_marginBottom="@dimen/_10sdp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/colorSearchBackground">
 
         <TextView
             android:id="@+id/textViewDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10sdp"
-            android:text="TextView"
+            android:textColor="@color/textColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.047"
@@ -30,6 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_5sdp"
             android:text="&#8942;"
+            android:textColor="@color/textColor"
             android:textAppearance="?android:textAppearanceLarge"
             app:layout_constraintBottom_toBottomOf="@+id/textViewDate"
             app:layout_constraintEnd_toEndOf="parent"
@@ -43,9 +45,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10sdp"
-
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:textColor="@color/textColor"
             android:layout_marginTop="12dp"
-            android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.047"
             app:layout_constraintStart_toStartOf="parent"
@@ -56,13 +58,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10sdp"
-
+            android:textColor="@color/textColor"
             android:layout_marginTop="12dp"
-            android:text="TextView"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.047"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-</com.google.android.material.card.MaterialCardView>
+</androidx.cardview.widget.CardView>
