@@ -2,21 +2,15 @@ package tech.danielwaiguru.notebook
 
 import android.app.Activity
 import android.content.Intent
-import android.icu.text.MessageFormat.format
 import android.os.Bundle
-import android.text.format.DateFormat.format
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_note.*
-import kotlinx.android.synthetic.main.note_item_view_holder.*
 import tech.danielwaiguru.notebook.database.Note
-import java.lang.String.format
-import java.text.DateFormat
-import java.text.SimpleDateFormat
-import java.util.*
 
 class NoteActivity : AppCompatActivity() {
     private lateinit var noteRecyclerView: RecyclerView
@@ -29,7 +23,7 @@ class NoteActivity : AppCompatActivity() {
         setContentView(R.layout.activity_note)
         noteRecyclerView = findViewById(R.id.notes_rv)
         noteRecyclerView.layoutManager = LinearLayoutManager(this)
-        val noteAdapter = NoteAdapter()
+        val noteAdapter = NoteAdapter { note -> noteItemClicked(note) }
         noteRecyclerView.adapter = noteAdapter
         /**
          * Get a new or existing viewmodel
@@ -57,5 +51,8 @@ class NoteActivity : AppCompatActivity() {
             val note = Note(0, title, text)
             noteViewModel.insert(note)
         }
+    }
+    private fun noteItemClicked(note: Note){
+        Toast.makeText(applicationContext, note.noteTitle, Toast.LENGTH_LONG).show()
     }
 }

@@ -7,11 +7,15 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import tech.danielwaiguru.notebook.database.Note
 
-class NoteAdapter: RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
+class NoteAdapter(private val listener: (Note) -> Unit): RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
     private var notes = emptyList<Note>() //Cached copy of notes
     inner class NoteViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val textViewTitle: TextView = itemView.findViewById(R.id.textViewTitle)
         val textViewNoteText: TextView = itemView.findViewById(R.id.textViewNote)
+        fun bind(note: Note){
+            textViewTitle.text = note.noteTitle
+            textViewNoteText.text = note.noteText
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
@@ -25,9 +29,14 @@ class NoteAdapter: RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
-        val note = notes[position]
+        val note: Note = notes[position]
         holder.textViewTitle.text = note.noteTitle
         holder.textViewNoteText.text = note.noteText
+        //holder.bind(note)
+        holder.itemView.setOnClickListener {
+            listener(note)
+        }
+        holder.bind(note)
     }
     internal fun setNotes(notes: List<Note>){
         this.notes = notes
