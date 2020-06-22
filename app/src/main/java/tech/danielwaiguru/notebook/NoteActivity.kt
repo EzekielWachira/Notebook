@@ -3,7 +3,6 @@ package tech.danielwaiguru.notebook
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -53,6 +52,11 @@ class NoteActivity : AppCompatActivity() {
         }
     }
     private fun noteItemClicked(note: Note){
-        Toast.makeText(applicationContext, note.noteTitle, Toast.LENGTH_LONG).show()
+        val editIntent = Intent(this@NoteActivity, CreateNoteActivity::class.java)
+        val title = note.noteTitle
+        val text = note.noteText
+        editIntent.putExtra("TITLE_EXTRA", title)
+        editIntent.putExtra("TEXT_EXTRA", text)
+        startActivity(editIntent)
     }
 }

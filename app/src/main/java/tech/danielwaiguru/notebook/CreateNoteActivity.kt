@@ -2,11 +2,10 @@ package tech.danielwaiguru.notebook
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_create_note.*
-import tech.danielwaiguru.notebook.database.Note
 
 class CreateNoteActivity : AppCompatActivity() {
     companion object{
@@ -22,6 +21,7 @@ class CreateNoteActivity : AppCompatActivity() {
         imageViewSave.setOnClickListener {
             saveNote()
         }
+        getIncomingIntent()
     }
     private fun saveNote(){
         val replyIntent = Intent()
@@ -37,5 +37,11 @@ class CreateNoteActivity : AppCompatActivity() {
             Toast.makeText(applicationContext, "Cannot save empty note", Toast.LENGTH_LONG).show()
         }
         finish()
+    }
+    private fun getIncomingIntent(){
+        if (intent.hasExtra("TITLE_EXTRA") && intent.hasExtra("TEXT_EXTRA")){
+            etNoteTitle.setText(intent.getStringExtra("TITLE_EXTRA"))
+            etNoteText.setText(intent.getStringExtra("TEXT_EXTRA"))
+        }
     }
 }
