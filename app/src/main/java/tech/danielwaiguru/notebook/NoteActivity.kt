@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_note.*
 import tech.danielwaiguru.notebook.database.Note
+import tech.danielwaiguru.notebook.database.NoteDatabase
+import tech.danielwaiguru.notebook.database.NoteRepository
 
 class NoteActivity : AppCompatActivity() {
     private lateinit var noteRecyclerView: RecyclerView
@@ -47,7 +49,7 @@ class NoteActivity : AppCompatActivity() {
         if (requestCode == NOTE_REQUEST_CODE && resultCode == Activity.RESULT_OK){
             val title:String = data?.getStringExtra(CreateNoteActivity.NOTE_TITLE)!!
             val text:String = data.getStringExtra(CreateNoteActivity.NOTE_TEXT)!!
-            val note = Note(0, title, text)
+            val note = Note(0, noteTitle = title, noteText = text)
             noteViewModel.insert(note)
         }
     }
