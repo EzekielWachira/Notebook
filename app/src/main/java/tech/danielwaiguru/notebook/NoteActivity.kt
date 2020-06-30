@@ -49,7 +49,8 @@ class NoteActivity : AppCompatActivity() {
         if (requestCode == NOTE_REQUEST_CODE && resultCode == Activity.RESULT_OK){
             val title:String = data?.getStringExtra(CreateNoteActivity.NOTE_TITLE)!!
             val text:String = data.getStringExtra(CreateNoteActivity.NOTE_TEXT)!!
-            val note = Note(0, noteTitle = title, noteText = text)
+            val date: String = data.getStringExtra(CreateNoteActivity.DATE_TEXT)!!
+            val note = Note(0, noteTitle = title, noteText = text, createdAt = date)
             noteViewModel.insert(note)
         }
     }

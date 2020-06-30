@@ -8,5 +8,6 @@ data class Note (
     @PrimaryKey(autoGenerate = true)
     val noteId: Int,
     var noteTitle: String,
-    var noteText: String
+    var noteText: String,
+    var createdAt: String
 )
