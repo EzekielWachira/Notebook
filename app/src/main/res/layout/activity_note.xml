@@ -9,7 +9,7 @@
     android:background="@color/colorPrimaryDark">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_13sdp"
@@ -22,37 +22,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabSettings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-
-        android:layout_marginEnd="16dp"
-        android:clickable="true"
-        android:src="@drawable/ic_settings"
-        app:fabSize="mini"
-        android:background="@color/colorAccent"
-        android:tint="@color/textColor"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:focusable="true" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAddNote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="35dp"
-        android:layout_marginEnd="32dp"
         android:clickable="true"
         android:src="@drawable/ic_add"
         app:fabSize="mini"
         android:tint="@color/textColor"
-        app:layout_constraintEnd_toStartOf="@+id/fabSettings"
-        app:layout_constraintHorizontal_bias="0.852"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="@dimen/_14sdp"
         android:focusable="true" />
 
     <LinearLayout
@@ -65,7 +45,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:gravity="center_vertical"
         android:background="@drawable/search_background"
-        app:layout_constraintTop_toBottomOf="@+id/fabSettings"
+        app:layout_constraintTop_toBottomOf="@id/titleTextView"
         android:layout_marginStart="@dimen/_13sdp"
         android:paddingStart="@dimen/_5sdp"
         android:paddingEnd="@dimen/_5sdp"
@@ -75,10 +55,9 @@
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_20sdp"
             android:src="@drawable/ic_search"
-            android:tint="@color/searchLayout"
             android:contentDescription="@string/app_name"
 
-            />
+            app:tint="@color/colorAccent" />
         <EditText
             android:id="@+id/searchNote"
             android:layout_width="match_parent"

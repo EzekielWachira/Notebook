@@ -3,4 +3,9 @@
     <string name="_8942">⋮</string>
     <string name="search_notes">Search Notes</string>
     <string name="my_notes">My Notes</string>
+    <string name="note_hint">My Note</string>
+    <string name="title_hint">My Note Title</string>
+    <string name="date_hint">Date</string>
+    <string name="enter_note_title">Enter note title</string>
+    <string name="type_a_note">Type a note...</string>
 </resources>

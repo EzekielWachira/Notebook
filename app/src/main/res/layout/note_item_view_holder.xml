@@ -1,72 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="6dp"
-    app:cardElevation="10dp"
-    android:background="@color/colorSearchBackground"
-    android:layout_marginBottom="@dimen/_10sdp">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    android:background="@drawable/note_item_background"
+    android:paddingBottom="@dimen/margin"
+    android:layout_marginBottom="@dimen/margin_small">
+    <TextView
+        android:id="@+id/textViewTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorSearchBackground">
-
-        <TextView
-            android:id="@+id/textViewDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:layout_marginStart="@dimen/_5sdp"
-            android:textColor="@color/textColor"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.047"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
-            android:id="@+id/textViewDelete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_5sdp"
-            android:layout_marginTop="10dp"
-            android:text="@string/_8942"
-            android:textColor="@color/textColor"
-            android:textAppearance="?android:textAppearanceLarge"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewDate"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.968"
-            app:layout_constraintStart_toEndOf="@+id/textViewDate"
-            app:layout_constraintTop_toTopOf="@+id/textViewDate"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <TextView
-            android:id="@+id/textViewTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_6sdp"
-            android:textSize="@dimen/_18ssp"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-            android:textColor="@color/textColor"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.047"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewDate" />
-
-        <TextView
-            android:id="@+id/textViewNote"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_6sdp"
-            android:textColor="@color/textColor"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.047"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="@string/title_hint"
+        android:textColorHint="@color/textColor"
+        android:textStyle="bold"
+        android:textColor="@color/textColor"
+        android:layout_marginTop="@dimen/margin"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+    <TextView
+        android:id="@+id/textViewNote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/textColor"
+        android:textColorHint="@color/textColor"
+        android:hint="@string/note_hint"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"
+        app:layout_constraintStart_toStartOf="@id/textViewTitle"
+        app:layout_constraintEnd_toEndOf="@id/textViewTitle"
+        app:layout_constraintTop_toBottomOf="@id/textViewTitle"
+        />
+    <TextView
+        android:id="@+id/textViewDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/dateColor"
+        android:hint="@string/date_hint"
+        android:textColorHint="@color/textColor"
+        app:layout_constraintTop_toBottomOf="@id/textViewNote"
+        app:layout_constraintStart_toStartOf="@id/textViewNote"
+        app:layout_constraintEnd_toEndOf="@id/textViewNote"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"
+        android:layout_marginTop="@dimen/margin_small"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

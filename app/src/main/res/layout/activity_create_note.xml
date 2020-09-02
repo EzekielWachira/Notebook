@@ -10,7 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
-
         >
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -21,7 +20,6 @@
                 android:layout_width="@dimen/_30sdp"
                 android:layout_height="@dimen/_30sdp"
                 android:src="@drawable/ic_arrow_back"
-                android:tint="@color/textColor"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:layout_marginTop="@dimen/_13sdp"
@@ -29,29 +27,29 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
 
-                />
+                app:tint="@color/textColor" />
             <ImageView
                 android:id="@+id/imageViewSave"
                 android:layout_width="@dimen/_30sdp"
                 android:layout_height="@dimen/_30sdp"
                 android:src="@drawable/ic_done"
-                android:tint="@color/textColor"
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:layout_marginTop="@dimen/_13sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:contentDescription="@string/app_name"
                 android:background="@drawable/save_button"
-                />
+                app:tint="@color/textColor" />
             <EditText
                 android:id="@+id/etNoteTitle"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_30sdp"
                 android:background="@null"
-                android:hint="Enter note title"
+                android:hint="@string/enter_note_title"
                 android:textColor="@color/textColor"
                 android:textSize="@dimen/_14ssp"
                 android:includeFontPadding="false"
+                android:focusedByDefault="true"
                 android:textColorHint="@color/colorHint"
                 android:layout_marginStart="@dimen/_13sdp"
                 android:layout_marginEnd="@dimen/_13sdp"
@@ -60,13 +58,15 @@
                 android:layout_marginTop="@dimen/_20sdp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageViewCancel"/>
+                app:layout_constraintTop_toBottomOf="@+id/imageViewCancel"
+                android:autofillHints="false"
+                android:inputType="text|textCapWords"/>
             <EditText
                 android:id="@+id/etNoteText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:hint="Type a note..."
+                android:hint="@string/type_a_note"
                 android:textSize="@dimen/_14ssp"
                 android:textColor="@color/textColor"
                 android:textColorHint="@color/colorHint"
@@ -78,15 +78,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/etNoteTitle"
-                android:inputType="textCapSentences|textAutoCorrect|textMultiLine"
+                android:inputType="text|textCapSentences|textAutoCorrect|textMultiLine"
                 android:minHeight="@dimen/_100sdp"
                 android:gravity="top"
-                />
-
-
-
-
+                android:autofillHints="text" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

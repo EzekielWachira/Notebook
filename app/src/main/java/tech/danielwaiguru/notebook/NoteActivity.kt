@@ -42,7 +42,6 @@ class NoteActivity : AppCompatActivity() {
         searchNote
 
     }
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == NOTE_REQUEST_CODE && resultCode == Activity.RESULT_OK){
