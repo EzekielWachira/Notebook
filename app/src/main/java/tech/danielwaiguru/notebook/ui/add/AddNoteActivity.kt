@@ -15,6 +15,11 @@ class AddNoteActivity : AppCompatActivity() {
         setContentView(R.layout.activity_create_note)
         initListeners()
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        saveNote()
+    }
     private fun initListeners(){
         imageViewCancel.setOnClickListener {
             saveNote()
