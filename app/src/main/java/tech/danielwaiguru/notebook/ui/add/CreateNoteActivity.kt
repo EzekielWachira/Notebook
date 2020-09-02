@@ -1,4 +1,4 @@
-package tech.danielwaiguru.notebook
+package tech.danielwaiguru.notebook.ui.add
 
 import android.app.Activity
 import android.content.Intent
@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_create_note.*
+import tech.danielwaiguru.notebook.R
 import java.text.SimpleDateFormat
 import java.util.*
 

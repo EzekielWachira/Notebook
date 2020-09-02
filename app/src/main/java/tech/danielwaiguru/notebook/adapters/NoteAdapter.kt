@@ -1,10 +1,11 @@
-package tech.danielwaiguru.notebook
+package tech.danielwaiguru.notebook.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import tech.danielwaiguru.notebook.R
 import tech.danielwaiguru.notebook.database.Note
 
 class NoteAdapter(private val listener: (Note) -> Unit): RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {

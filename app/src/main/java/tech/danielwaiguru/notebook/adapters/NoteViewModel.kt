@@ -1,4 +1,4 @@
-package tech.danielwaiguru.notebook
+package tech.danielwaiguru.notebook.adapters
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

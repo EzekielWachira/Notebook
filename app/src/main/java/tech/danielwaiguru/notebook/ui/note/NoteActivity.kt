@@ -1,4 +1,4 @@
-package tech.danielwaiguru.notebook
+package tech.danielwaiguru.notebook.ui.note
 
 import android.app.Activity
 import android.content.Intent
@@ -9,7 +9,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_note.*
+import tech.danielwaiguru.notebook.R
+import tech.danielwaiguru.notebook.adapters.NoteAdapter
+import tech.danielwaiguru.notebook.adapters.NoteViewModel
 import tech.danielwaiguru.notebook.database.Note
+import tech.danielwaiguru.notebook.ui.add.CreateNoteActivity
 
 class NoteActivity : AppCompatActivity() {
     private lateinit var noteRecyclerView: RecyclerView
