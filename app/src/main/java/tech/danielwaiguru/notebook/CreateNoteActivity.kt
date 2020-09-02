@@ -49,7 +49,7 @@ class CreateNoteActivity : AppCompatActivity() {
             etNoteText.setText(intent.getStringExtra("TEXT_EXTRA"))
         }
     }
-    fun getDate(): String {
+    private fun getDate(): String {
         val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
         return sdf.format(Date())
     }

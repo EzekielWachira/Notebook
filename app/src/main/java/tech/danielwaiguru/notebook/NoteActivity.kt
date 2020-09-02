@@ -10,8 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_note.*
 import tech.danielwaiguru.notebook.database.Note
-import tech.danielwaiguru.notebook.database.NoteDatabase
-import tech.danielwaiguru.notebook.database.NoteRepository
 
 class NoteActivity : AppCompatActivity() {
     private lateinit var noteRecyclerView: RecyclerView
@@ -41,6 +39,7 @@ class NoteActivity : AppCompatActivity() {
             val intent = Intent(this, CreateNoteActivity::class.java)
             startActivityForResult(intent, NOTE_REQUEST_CODE)
         }
+        searchNote
 
     }
 

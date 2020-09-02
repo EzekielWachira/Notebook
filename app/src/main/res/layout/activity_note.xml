@@ -15,7 +15,7 @@
         android:layout_marginStart="@dimen/_13sdp"
         android:layout_marginTop="40dp"
         android:fontFamily="@font/lobster_two"
-        android:text="My Notes"
+        android:text="@string/my_notes"
         android:textColor="@color/textColor"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +35,8 @@
         android:tint="@color/textColor"
 
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:focusable="true" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAddNote"
@@ -51,7 +52,8 @@
         app:layout_constraintEnd_toStartOf="@+id/fabSettings"
         app:layout_constraintHorizontal_bias="0.852"
         app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:focusable="true" />
 
     <LinearLayout
         android:id="@+id/search_layout"
@@ -81,7 +83,7 @@
             android:id="@+id/searchNote"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_35sdp"
-            android:hint="Search Notes"
+            android:hint="@string/search_notes"
             android:textColor="@color/searchLayout"
             android:layout_marginStart="@dimen/_7sdp"
             android:background="@null"
