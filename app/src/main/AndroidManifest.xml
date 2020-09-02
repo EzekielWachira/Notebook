@@ -10,9 +10,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.edit.ReadNoteActivity" />
+        <activity android:name=".ui.edit.ReadNoteActivity"
+            android:label="Read Note"/>
         <activity android:name=".ui.add.AddNoteActivity" />
-        <activity android:name=".ui.note.NoteActivity">
+        <activity android:name=".ui.note.NoteActivity"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

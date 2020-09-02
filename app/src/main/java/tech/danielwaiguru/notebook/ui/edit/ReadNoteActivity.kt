@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_read_note.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import tech.danielwaiguru.notebook.R
@@ -14,15 +15,22 @@ import tech.danielwaiguru.notebook.utils.DateUtils
 
 class ReadNoteActivity : AppCompatActivity() {
     private val readNoteViewModel by viewModel<ReadNoteViewModel>()
+    lateinit var note: Note
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setSupportActionBar(toolbar)
         setContentView(R.layout.activity_read_note)
+        setSupportActionBar(toolbar)
+        toolbar.inflateMenu(R.menu.main_menu)
+        toolbar.overflowIcon?.setTint(ContextCompat.getColor(this, R.color.textColor))
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back)
+        note = intent.getParcelableExtra(NOTE_EXTRA)!!
         getIncomingParcel()
-        actionBack.setOnClickListener {
-            updateNote()
-            finish()
-        }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        updateNote()
     }
     private fun getIncomingParcel(){
         val receivedNote = intent.getParcelableExtra<Note>(NOTE_EXTRA)
@@ -33,8 +41,7 @@ class ReadNoteActivity : AppCompatActivity() {
         }
     }
     private fun updateNote(){
-        val oldNote = intent.getParcelableExtra<Note>(NOTE_EXTRA)!!
-        val id = oldNote.noteId
+        val id = note.noteId
         val title = titleRead.text.toString()
         val text= textRead.text.toString()
         val date = DateUtils.formatDate()
@@ -49,11 +56,21 @@ class ReadNoteActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId){
-            R.id.actionDelete ->{
+            android.R.id.home -> {
+                updateNote()
+                finish()
+                true
+            }
+            R.id.actionDelete -> {
+                deleteNote()
                 true
             }
             else -> super.onOptionsItemSelected(item)
         }
 
+    }
+    private fun deleteNote(){
+        readNoteViewModel.deleteNote(note)
+        finish()
     }
 }

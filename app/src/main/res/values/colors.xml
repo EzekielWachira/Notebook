@@ -8,4 +8,5 @@
     <color name="dateColor">#424242</color>
     <color name="colorSearchBackground">#333333</color>
     <color name="colorHint">#7B7B7B</color>
+    <color name="textColorSecondary">#fff</color>
 </resources>

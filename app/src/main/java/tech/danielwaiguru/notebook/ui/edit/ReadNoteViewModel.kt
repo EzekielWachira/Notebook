@@ -13,4 +13,7 @@ class ReadNoteViewModel:ViewModel(), KoinComponent {
     fun updateNote(note: Note) = viewModelScope.launch {
         noteRepository.updateNote(note)
     }
+    fun deleteNote(note: Note) = viewModelScope.launch {
+        noteRepository.deleteNote(note)
+    }
 }
