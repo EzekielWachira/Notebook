@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.edit.ReadNoteActivity"></activity>
-        <activity android:name=".ui.add.CreateNoteActivity" />
+        <activity android:name=".ui.add.AddNoteActivity" />
         <activity android:name=".ui.note.NoteActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

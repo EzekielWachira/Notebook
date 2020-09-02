@@ -1,4 +1,4 @@
-package tech.danielwaiguru.notebook.adapters
+package tech.danielwaiguru.notebook.ui.note
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -20,11 +20,4 @@ class NoteViewModel(application: Application): AndroidViewModel(application) {
     fun insert(note: Note) = viewModelScope.launch {
         noteRepository.insertNote(note)
     }
-    fun update(note: Note) = viewModelScope.launch {
-        noteRepository.updateNote(note)
-    }
-    fun delete(note: Note) = viewModelScope.launch {
-        noteRepository.deleteNote(note)
-    }
-
 }

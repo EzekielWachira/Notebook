@@ -11,9 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_note.*
 import tech.danielwaiguru.notebook.R
 import tech.danielwaiguru.notebook.adapters.NoteAdapter
-import tech.danielwaiguru.notebook.adapters.NoteViewModel
 import tech.danielwaiguru.notebook.database.Note
-import tech.danielwaiguru.notebook.ui.add.CreateNoteActivity
+import tech.danielwaiguru.notebook.ui.add.AddNoteActivity
 
 class NoteActivity : AppCompatActivity() {
     private lateinit var noteRecyclerView: RecyclerView
@@ -40,7 +39,7 @@ class NoteActivity : AppCompatActivity() {
         })
 
         fabAddNote.setOnClickListener {
-            val intent = Intent(this, CreateNoteActivity::class.java)
+            val intent = Intent(this, AddNoteActivity::class.java)
             startActivityForResult(intent, NOTE_REQUEST_CODE)
         }
         searchNote
@@ -49,15 +48,15 @@ class NoteActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == NOTE_REQUEST_CODE && resultCode == Activity.RESULT_OK){
-            val title:String = data?.getStringExtra(CreateNoteActivity.NOTE_TITLE)!!
-            val text:String = data.getStringExtra(CreateNoteActivity.NOTE_TEXT)!!
-            val date: String = data.getStringExtra(CreateNoteActivity.DATE_TEXT)!!
+            val title:String = data?.getStringExtra(AddNoteActivity.NOTE_TITLE)!!
+            val text:String = data.getStringExtra(AddNoteActivity.NOTE_TEXT)!!
+            val date: String = data.getStringExtra(AddNoteActivity.DATE_TEXT)!!
             val note = Note(0, noteTitle = title, noteText = text, createdAt = date)
             noteViewModel.insert(note)
         }
     }
     private fun noteItemClicked(note: Note){
-        val editIntent = Intent(this@NoteActivity, CreateNoteActivity::class.java)
+        val editIntent = Intent(this@NoteActivity, AddNoteActivity::class.java)
         val title = note.noteTitle
         val text = note.noteText
         editIntent.putExtra("TITLE_EXTRA", title)

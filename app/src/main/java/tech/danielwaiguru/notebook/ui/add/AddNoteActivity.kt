@@ -10,7 +10,7 @@ import tech.danielwaiguru.notebook.R
 import java.text.SimpleDateFormat
 import java.util.*
 
-class CreateNoteActivity : AppCompatActivity() {
+class AddNoteActivity : AppCompatActivity() {
     companion object{
         const val NOTE_TITLE = "NOTE_TITLE"
         const val NOTE_TEXT = "NOTE_TEXT"
