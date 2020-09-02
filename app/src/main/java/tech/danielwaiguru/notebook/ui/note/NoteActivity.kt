@@ -8,8 +8,10 @@ import kotlinx.android.synthetic.main.activity_note.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import tech.danielwaiguru.notebook.R
 import tech.danielwaiguru.notebook.adapters.NoteAdapter
+import tech.danielwaiguru.notebook.common.Constants.NOTE_EXTRA
 import tech.danielwaiguru.notebook.database.Note
 import tech.danielwaiguru.notebook.ui.add.AddNoteActivity
+import tech.danielwaiguru.notebook.ui.edit.ReadNoteActivity
 
 class NoteActivity : AppCompatActivity() {
     private val noteViewModel by viewModel<NoteViewModel>()
@@ -37,6 +39,9 @@ class NoteActivity : AppCompatActivity() {
         startActivity(Intent(this, AddNoteActivity::class.java))
     }
     private fun noteItemClicked(note: Note){
-
+        val intent = Intent(this, ReadNoteActivity::class.java).apply {
+            putExtra(NOTE_EXTRA, note)
+        }
+        startActivity(intent)
     }
 }

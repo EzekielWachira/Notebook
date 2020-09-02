@@ -8,7 +8,7 @@ interface NoteDao {
     /**
      * function to insert a note
      */
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertNote(note: Note): Long
     /**
      * function to update a note

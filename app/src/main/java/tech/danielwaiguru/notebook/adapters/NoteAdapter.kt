@@ -41,7 +41,7 @@ class NoteAdapter(private val listener: (Note) -> Unit): RecyclerView.Adapter<No
         }
         /*holder.textViewDelete.setOnClickListener {
             val popup = PopupMenu(it.context, it)
-            popup.menuInflater.inflate(R.menu.popup_menu, popup.menu)
+            popup.menuInflater.inflate(R.menu.main_menu, popup.menu)
             popup.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener {menuItem ->
                 return@OnMenuItemClickListener when(menuItem.itemId){
                     R.id.action_delete ->{
