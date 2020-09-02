@@ -1,57 +1,45 @@
 package tech.danielwaiguru.notebook.ui.add
 
-import android.app.Activity
-import android.content.Intent
+import android.annotation.SuppressLint
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_create_note.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import tech.danielwaiguru.notebook.R
-import java.text.SimpleDateFormat
-import java.util.*
+import tech.danielwaiguru.notebook.database.Note
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
 
 class AddNoteActivity : AppCompatActivity() {
-    companion object{
-        const val NOTE_TITLE = "NOTE_TITLE"
-        const val NOTE_TEXT = "NOTE_TEXT"
-        const val DATE_TEXT = "DATE_TEXT"
-    }
+    private val addNoteViewModel by viewModel<AddNoteViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_note)
+        initListeners()
+    }
+    private fun initListeners(){
         imageViewCancel.setOnClickListener {
+            saveNote()
             finish()
         }
         imageViewSave.setOnClickListener {
             saveNote()
-        }
-        getIncomingIntent()
-    }
-    private fun saveNote(){
-        val replyIntent = Intent()
-        if (etNoteText.text.isNotEmpty() && etNoteTitle.text.isNotEmpty()){
-            val title = etNoteTitle.text.toString()
-            val textNote = etNoteText.text.toString()
-            val createdAt = getDate()
-            replyIntent.putExtra(NOTE_TITLE, title)
-            replyIntent.putExtra(NOTE_TEXT, textNote)
-            replyIntent.putExtra(DATE_TEXT, createdAt)
-            setResult(Activity.RESULT_OK, replyIntent)
             finish()
         }
-        else{
-            Toast.makeText(applicationContext, "Cannot save empty note", Toast.LENGTH_LONG).show()
-        }
-        finish()
     }
-    private fun getIncomingIntent(){
-        if (intent.hasExtra("TITLE_EXTRA") && intent.hasExtra("TEXT_EXTRA")){
-            etNoteTitle.setText(intent.getStringExtra("TITLE_EXTRA"))
-            etNoteText.setText(intent.getStringExtra("TEXT_EXTRA"))
-        }
+    private fun saveNote(){
+        val noteTitle = etNoteTitle.text.toString()
+        val noteText = etNoteText.text.toString()
+        val date = formatDate()
+        val note = Note(noteTitle = noteTitle, noteText = noteText, createdAt = date)
+        addNoteViewModel.saveNote(note)
     }
-    private fun getDate(): String {
-        val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
-        return sdf.format(Date())
+
+    @SuppressLint("NewApi")
+    private fun formatDate(): String {
+        val date = LocalDateTime.now()
+        val formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM)
+        return date.format(formatter)
     }
 }

@@ -61,4 +61,7 @@ class NoteAdapter(private val listener: (Note) -> Unit): RecyclerView.Adapter<No
         this.notes = notes
         notifyDataSetChanged()
     }
+    interface NoteItemClickListener {
+        fun onNoteItemClicked(note: Note)
+    }
 }

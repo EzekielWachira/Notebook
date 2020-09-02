@@ -2,8 +2,6 @@ package tech.danielwaiguru.notebook.ui.note
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.launch
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 import tech.danielwaiguru.notebook.database.Note
@@ -17,7 +15,5 @@ class NoteViewModel: ViewModel(), KoinComponent {
         noteRepository = NoteRepository(noteDao)
         allNotes = noteRepository.allNotes
     }*/
-    fun insert(note: Note) = viewModelScope.launch {
-        noteRepository.insertNote(note)
-    }
+
 }
