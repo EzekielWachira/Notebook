@@ -15,7 +15,7 @@ import tech.danielwaiguru.notebook.ui.edit.ReadNoteActivity
 
 class NoteActivity : AppCompatActivity() {
     private val noteViewModel by viewModel<NoteViewModel>()
-    private val noteAdapter: NoteAdapter by lazy { NoteAdapter { note -> noteItemClicked(note)  } }
+    private val noteAdapter: NoteAdapter by lazy { NoteAdapter(this) { note -> noteItemClicked(note)  } }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_note)
