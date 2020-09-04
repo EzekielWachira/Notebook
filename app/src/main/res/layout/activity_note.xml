@@ -61,7 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_35sdp"
             android:hint="@string/search_notes"
-            android:textColor="@color/searchLayout"
+            android:textColor="@color/textColor"
             android:layout_marginStart="@dimen/_7sdp"
             android:background="@null"
             android:imeOptions="actionDone"

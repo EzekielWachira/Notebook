@@ -20,7 +20,6 @@ class NoteAdapter(private val context: Context, private val listener: (Note) -> 
     RecyclerView.Adapter<NoteAdapter.NoteViewHolder>(), Filterable {
     private var notes = emptyList<Note>() //Cached copy of notes
     private var searchableList = emptyList<Note>()
-    private val onNothingFound: (() -> Unit)? = null
     class NoteViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val noteItem: ConstraintLayout = itemView.noteItem
         val textViewTitle: TextView = itemView.findViewById(R.id.textViewTitle)
@@ -69,7 +68,7 @@ class NoteAdapter(private val context: Context, private val listener: (Note) -> 
         holder.bind(note)
     }
     internal fun setNotes(notes: List<Note>){
-        this.searchableList = notes
+        this.searchableList = ArrayList(notes)
         this.notes = notes
         notifyDataSetChanged()
     }
@@ -78,14 +77,14 @@ class NoteAdapter(private val context: Context, private val listener: (Note) -> 
         return object : Filter() {
             private val filterResults = FilterResults()
             override fun performFiltering(constraint: CharSequence?): FilterResults {
-                searchableList = if (constraint.toString().isEmpty()){
+                searchableList = if (constraint.isNullOrEmpty()){
                     notes
                 } else {
                     val resultsList = ArrayList<Note>()
                     val filterPattern = constraint.toString()
                         .toLowerCase(Locale.ROOT)
                     for (note in notes){
-                        if (note.noteTitle.contains(filterPattern)){
+                        if (note.noteText.toLowerCase(Locale.ROOT).contains(filterPattern)){
                             resultsList.add(note)
                         }
                     }
@@ -96,9 +95,6 @@ class NoteAdapter(private val context: Context, private val listener: (Note) -> 
             }
 
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-                /*if (constraint.isNullOrEmpty()){
-                    onNothingFound?.invoke()
-                }*/
                 searchableList = results?.values as ArrayList<Note>
                 notifyDataSetChanged()
             }
