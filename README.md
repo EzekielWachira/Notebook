@@ -8,10 +8,10 @@ I used the following components in development
 
 #### User Interface
 ##### All Notes/Tasks Screen
-<image src="screenshots/notes.png" height="600px />
+<image src="screenshots/notes.png" height="600px" />
 
 ##### Add New Note/Task Screen
-<image src="screenshots/add.png" height="600px/>
+<image src="screenshots/add.png" height="600px"/>
 
 ##### Read/Edit Note Screen
-<image src="screenshots/read.png" height="600px/>
+<image src="screenshots/read.png" height="600px"/>
