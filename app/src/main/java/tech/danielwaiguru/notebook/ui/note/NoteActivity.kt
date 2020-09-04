@@ -2,6 +2,8 @@ package tech.danielwaiguru.notebook.ui.note
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_note.*
@@ -21,6 +23,7 @@ class NoteActivity : AppCompatActivity() {
         setContentView(R.layout.activity_note)
         setupRecyclerView()
         initListeners()
+        searchNote()
         /**
          * adding an observer to the live data
          */
@@ -43,5 +46,17 @@ class NoteActivity : AppCompatActivity() {
             putExtra(NOTE_EXTRA, note)
         }
         startActivity(intent)
+    }
+    private fun searchNote(){
+        searchNote.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(charSequence: CharSequence?, start: Int, before: Int, count: Int) {
+                noteAdapter.filter.filter(charSequence.toString())
+            }
+
+            override fun afterTextChanged(s: Editable?){}
+
+        })
     }
 }
