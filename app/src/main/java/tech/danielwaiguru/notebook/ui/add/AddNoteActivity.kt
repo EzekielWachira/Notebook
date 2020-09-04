@@ -31,10 +31,16 @@ class AddNoteActivity : AppCompatActivity() {
         }
     }
     private fun saveNote(){
-        val noteTitle = etNoteTitle.text.toString()
+        if (etNoteText.text.isEmpty()){
+            return
+        }
+        val noteTitle = etNoteTitle.text.toString() ?: ""
         val noteText = etNoteText.text.toString()
         val date = DateUtils.formatDate()
         val note = Note(noteTitle = noteTitle, noteText = noteText, createdAt = date)
         addNoteViewModel.saveNote(note)
+    }
+    private fun validateNote(){
+
     }
 }
