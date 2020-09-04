@@ -53,7 +53,6 @@
                 android:textColor="@color/textColor"
                 android:textSize="@dimen/_14ssp"
                 android:includeFontPadding="false"
-                android:focusedByDefault="true"
                 android:textColorHint="@color/colorHint"
                 android:layout_marginStart="@dimen/_13sdp"
                 android:layout_marginEnd="@dimen/_13sdp"

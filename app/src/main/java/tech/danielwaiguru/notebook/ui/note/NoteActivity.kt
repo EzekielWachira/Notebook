@@ -17,6 +17,7 @@ import tech.danielwaiguru.notebook.ui.edit.ReadNoteActivity
 
 class NoteActivity : AppCompatActivity() {
     private val noteViewModel by viewModel<NoteViewModel>()
+    //private val noteAdapter: NoteAdapter by lazy { NoteAdapter(this) { note -> noteItemClicked(note)  } }
     private val noteAdapter: NoteAdapter by lazy { NoteAdapter(this) { note -> noteItemClicked(note)  } }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +29,7 @@ class NoteActivity : AppCompatActivity() {
          * adding an observer to the live data
          */
         noteViewModel.allNotes.observe(this, { note->
-            note?.let { noteAdapter.setNotes(it) }
+            note?.let { noteAdapter.setData(it) }
         })
     }
     private fun initListeners(){

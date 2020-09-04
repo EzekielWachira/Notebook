@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/noteItem"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/note_item_background"
+    android:paddingBottom="@dimen/margin"
+    android:layout_marginBottom="@dimen/margin_small">
+
+    <TextView
+        android:id="@+id/textViewNote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/textColor"
+        android:textColorHint="@color/textColor"
+        tools:text="@string/note_hint"
+        android:maxHeight="@dimen/note_max_height"
+        android:layout_marginTop="@dimen/margin"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+    <TextView
+        android:id="@+id/textViewDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/dateColor"
+        tools:text="@string/date_hint"
+        android:textColorHint="@color/textColor"
+        app:layout_constraintTop_toBottomOf="@id/textViewNote"
+        app:layout_constraintStart_toStartOf="@id/textViewNote"
+        app:layout_constraintEnd_toEndOf="@id/textViewNote"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"
+        android:layout_marginTop="@dimen/margin_small"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
