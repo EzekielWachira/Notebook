@@ -11,6 +11,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import tech.danielwaiguru.notebook.R
 import tech.danielwaiguru.notebook.adapters.NoteAdapter
 import tech.danielwaiguru.notebook.common.Constants.NOTE_EXTRA
+import tech.danielwaiguru.notebook.common.extensions.visible
 import tech.danielwaiguru.notebook.database.Note
 import tech.danielwaiguru.notebook.ui.add.AddNoteActivity
 import tech.danielwaiguru.notebook.ui.edit.ReadNoteActivity
@@ -29,7 +30,11 @@ class NoteActivity : AppCompatActivity() {
          * adding an observer to the live data
          */
         noteViewModel.allNotes.observe(this, { note->
-            note?.let { noteAdapter.setData(it) }
+            if (note.isEmpty()){
+                noNotes.visible()
+            }
+            noteAdapter.setData(note)
+            //note?.let { noteAdapter.setData(it) }
         })
     }
     private fun initListeners(){

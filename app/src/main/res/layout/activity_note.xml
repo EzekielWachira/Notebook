@@ -86,4 +86,15 @@
         android:clipToPadding="false"
         android:paddingBottom="@dimen/_5sdp"
         />
+    <TextView
+        android:id="@+id/noNotes"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        android:text="@string/no_notes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_layout"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
