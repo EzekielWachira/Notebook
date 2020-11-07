@@ -6,9 +6,22 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColorSecondary">@color/textColor</item>
+
+        <item name="floatingActionButtonStyle">@style/FabStyle</item>
     </style>
     <style name="MainActionBar" parent="ThemeOverlay.AppCompat.Light">
         <item name="android:colorBackground">@color/colorSearchBackground</item>
         <item name="android:textColor">@color/textColor</item>
+    </style>
+    <style name="FabShapeStyle" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerSize">50%</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerFamilyTopLeft">rounded</item>
+        <item name="cornerFamilyTopRight">rounded</item>
+        <item name="cornerFamilyBottomLeft">cut</item>
+        <item name="cornerFamilyBottomRight">rounded</item>
+    </style>
+    <style name="FabStyle" parent="Widget.Design.FloatingActionButton">
+        <item name="shapeAppearanceOverlay">@style/FabShapeStyle</item>
     </style>
 </resources>

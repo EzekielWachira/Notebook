@@ -27,11 +27,12 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_create"
         android:tint="@color/textColor"
+        app:fabSize="normal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="@dimen/_14sdp"
-        />
+        android:contentDescription="@string/fab_description" />
 
     <LinearLayout
         android:id="@+id/search_layout"
