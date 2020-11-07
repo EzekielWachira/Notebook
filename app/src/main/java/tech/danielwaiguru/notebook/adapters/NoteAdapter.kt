@@ -2,20 +2,17 @@ package tech.danielwaiguru.notebook.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.Filter
 import android.widget.Filterable
-import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.note_item.view.*
-import kotlinx.android.synthetic.main.note_item_view_holder.view.noteItem
 import tech.danielwaiguru.notebook.R
 import tech.danielwaiguru.notebook.common.Constants.NOTE_WITHOUT_TITLE
 import tech.danielwaiguru.notebook.common.Constants.NOTE_WITH_TITLE
 import tech.danielwaiguru.notebook.database.Note
+import tech.danielwaiguru.notebook.databinding.NoteItemWithTitleBinding
+import tech.danielwaiguru.notebook.databinding.NoteItemWithoutTitleBinding
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -23,40 +20,35 @@ class NoteAdapter(private val context: Context, private val listener: (Note) -> 
     RecyclerView.Adapter<RecyclerView.ViewHolder>(), Filterable {
     private var notes = emptyList<Note>() //Cached copy of notes
     private var searchableList = emptyList<Note>()
-    class NoteWithTitleViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        private val noteItem: ConstraintLayout = itemView.noteItem
-        private val textViewTitle: TextView = itemView.findViewById(R.id.textViewTitle)
-        private val textViewNoteText: TextView = itemView.findViewById(R.id.textViewNote)
-        private val textViewDate : TextView = itemView.findViewById(R.id.textViewDate)
+    class NoteWithTitleViewHolder(private val itemBinding: NoteItemWithTitleBinding):
+        RecyclerView.ViewHolder(itemBinding.root){
         fun bind(context: Context, note: Note){
-            noteItem.animation = AnimationUtils.loadAnimation(context, R.anim.fade_in)
-            textViewTitle.text = note.noteTitle
-            textViewNoteText.text = note.noteText
-            textViewDate.text = note.createdAt
+            itemBinding.noteItem.animation = AnimationUtils.loadAnimation(context, R.anim.fade_in)
+            itemBinding.textViewTitle.text = note.noteTitle
+            itemBinding.textViewNote.text = note.noteText
+            itemBinding.textViewDate.text = note.createdAt
         }
     }
-    class NoteWithoutViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        private val noteLayout: ConstraintLayout = itemView.noteItem
-        private val noteText: TextView = itemView.textViewNote
-        private val date: TextView = itemView.textViewDate
+    class NoteWithoutViewHolder(private val itemBinding: NoteItemWithoutTitleBinding):
+        RecyclerView.ViewHolder(itemBinding.root){
         fun bind(context: Context, note: Note){
-            noteText.text = note.noteText
-            date.text = note.createdAt
-            noteLayout.animation = AnimationUtils.loadAnimation(context, R.anim.fade_in)
+            itemBinding.textViewNote.text = note.noteText
+            itemBinding.textViewDate.text = note.createdAt
+            itemBinding.noteItemLayout.animation = AnimationUtils.loadAnimation(context, R.anim.fade_in)
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == NOTE_WITH_TITLE){
-            NoteWithTitleViewHolder(
-                LayoutInflater.from(parent.context).inflate(
-                    R.layout.note_item_view_holder, parent, false
-                )
+            val itemBinding = NoteItemWithTitleBinding.inflate(
+                LayoutInflater.from(parent.context), parent, false
             )
+            NoteWithTitleViewHolder(itemBinding)
         } else{
-            NoteWithoutViewHolder(LayoutInflater.from(parent.context).inflate(
-                R.layout.note_item, parent, false
-            ))
+            val itemBinding = NoteItemWithoutTitleBinding.inflate(
+                LayoutInflater.from(parent.context), parent, false
+            )
+            NoteWithoutViewHolder(itemBinding)
         }
     }
 

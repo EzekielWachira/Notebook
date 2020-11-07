@@ -2,17 +2,18 @@ package tech.danielwaiguru.notebook.ui.add
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_create_note.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import tech.danielwaiguru.notebook.R
 import tech.danielwaiguru.notebook.database.Note
+import tech.danielwaiguru.notebook.databinding.ActivityCreateNoteBinding
 import tech.danielwaiguru.notebook.utils.DateUtils
 
 class AddNoteActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityCreateNoteBinding
     private val addNoteViewModel by viewModel<AddNoteViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_create_note)
+        binding = ActivityCreateNoteBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         initListeners()
     }
 
@@ -21,26 +22,23 @@ class AddNoteActivity : AppCompatActivity() {
         saveNote()
     }
     private fun initListeners(){
-        imageViewCancel.setOnClickListener {
+        binding.imageViewCancel.setOnClickListener {
             saveNote()
             finish()
         }
-        imageViewSave.setOnClickListener {
+        binding.imageViewSave.setOnClickListener {
             saveNote()
             finish()
         }
     }
     private fun saveNote(){
-        if (etNoteText.text.isEmpty()){
+        if (binding.etNoteText.text.isEmpty()){
             return
         }
-        val noteTitle = etNoteTitle.text.toString() ?: ""
-        val noteText = etNoteText.text.toString()
+        val noteTitle = binding.etNoteTitle.text.toString()
+        val noteText = binding.etNoteText.text.toString()
         val date = DateUtils.formatDate()
         val note = Note(noteTitle = noteTitle, noteText = noteText, createdAt = date)
         addNoteViewModel.saveNote(note)
-    }
-    private fun validateNote(){
-
     }
 }

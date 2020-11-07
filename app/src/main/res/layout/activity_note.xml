@@ -73,7 +73,7 @@
             />
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/notes_rv"
+        android:id="@+id/notesRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"

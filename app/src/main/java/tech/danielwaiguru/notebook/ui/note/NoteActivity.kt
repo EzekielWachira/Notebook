@@ -6,23 +6,25 @@ import android.text.Editable
 import android.text.TextWatcher
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.activity_note.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import tech.danielwaiguru.notebook.R
 import tech.danielwaiguru.notebook.adapters.NoteAdapter
 import tech.danielwaiguru.notebook.common.Constants.NOTE_EXTRA
 import tech.danielwaiguru.notebook.common.extensions.visible
 import tech.danielwaiguru.notebook.database.Note
+import tech.danielwaiguru.notebook.databinding.ActivityNoteBinding
 import tech.danielwaiguru.notebook.ui.add.AddNoteActivity
 import tech.danielwaiguru.notebook.ui.edit.ReadNoteActivity
 
 class NoteActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityNoteBinding
     private val noteViewModel by viewModel<NoteViewModel>()
-    //private val noteAdapter: NoteAdapter by lazy { NoteAdapter(this) { note -> noteItemClicked(note)  } }
-    private val noteAdapter: NoteAdapter by lazy { NoteAdapter(this) { note -> noteItemClicked(note)  } }
+    private val noteAdapter: NoteAdapter by lazy { NoteAdapter(this) {
+            note -> noteItemClicked(note)
+    } }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_note)
+        binding = ActivityNoteBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         setupRecyclerView()
         initListeners()
         searchNote()
@@ -31,16 +33,15 @@ class NoteActivity : AppCompatActivity() {
          */
         noteViewModel.allNotes.observe(this, { note->
             if (note.isEmpty()){
-                noNotes.visible()
+                binding.noNotes.visible()
             }
             noteAdapter.setData(note)
-            //note?.let { noteAdapter.setData(it) }
         })
     }
     private fun initListeners(){
-        fabAddNote.setOnClickListener { initUi() }
+        binding.fabAddNote.setOnClickListener { initUi() }
     }
-    private fun setupRecyclerView() = notes_rv.apply {
+    private fun setupRecyclerView() = binding.notesRecyclerView.apply {
         this.adapter = noteAdapter
         this.layoutManager = LinearLayoutManager(this@NoteActivity)
     }
@@ -54,7 +55,7 @@ class NoteActivity : AppCompatActivity() {
         startActivity(intent)
     }
     private fun searchNote(){
-        searchNote.addTextChangedListener(object : TextWatcher {
+        binding.searchNote.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(charSequence: CharSequence?, start: Int, before: Int, count: Int) {
