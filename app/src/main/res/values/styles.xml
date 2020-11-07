@@ -21,7 +21,11 @@
         <item name="cornerFamilyBottomLeft">cut</item>
         <item name="cornerFamilyBottomRight">rounded</item>
     </style>
+    <style name="Shape" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerSize">50%</item>
+        <item name="cornerFamily">cut</item>
+    </style>
     <style name="FabStyle" parent="Widget.Design.FloatingActionButton">
-        <item name="shapeAppearanceOverlay">@style/FabShapeStyle</item>
+        <item name="shapeAppearanceOverlay">@style/Shape</item>
     </style>
 </resources>
