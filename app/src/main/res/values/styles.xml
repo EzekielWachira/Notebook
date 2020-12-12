@@ -7,7 +7,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColorSecondary">@color/textColor</item>
 
-        <item name="floatingActionButtonStyle">@style/FabStyle</item>
+        <!-- <item name="floatingActionButtonStyle">@style/FabStyle</item> -->
     </style>
     <style name="MainActionBar" parent="ThemeOverlay.AppCompat.Light">
         <item name="android:colorBackground">@color/colorSearchBackground</item>
