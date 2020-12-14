@@ -1,7 +1,7 @@
 package tech.danielwaiguru.notebook.database
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface NoteDao {
@@ -24,5 +24,5 @@ interface NoteDao {
      * function to retrieve all notes from the database
      */
     @Query("SELECT * FROM notes")
-    fun getAllNotes(): LiveData<List<Note>>
+    fun getAllNotes(): Flow<List<Note>>
 }
