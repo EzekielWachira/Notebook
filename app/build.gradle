@@ -85,6 +85,7 @@ dependencies {
     //testImplementation "org.robolectric:robolectric:4.3.1"
     testImplementation 'org.mockito:mockito-inline:2.8.47'
     testImplementation "org.mockito:mockito-core:3.2.4"
+    testImplementation 'org.koin:koin-test:2.1.6'
     //Instrumented Test
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation "junit:junit:4.13.1"
