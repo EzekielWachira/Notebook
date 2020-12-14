@@ -22,7 +22,7 @@ import tech.danielwaiguru.notebook.ui.add.AddNoteViewModel
 import tech.danielwaiguru.notebook.ui.note.NoteViewModel
 import java.text.DateFormat
 
-@RunWith(AndroidJUnit4::class.java)
+@RunWith(AndroidJUnit4::class)
 class NoteViewModelTest : KoinTest{
     @Mock
     private lateinit var noteViewModel: NoteViewModel
