@@ -44,7 +44,7 @@ class NoteViewModelTest : KoinTest{
     fun add_note_test() {
         val note = Note(noteTitle = "Test Note", noteText = "Test note text", createdAt = DateFormat.FULL.toString())
         addNoteViewModel.saveNote(note)
-        val savedNote = noteViewModel.allNotes.value
+        val savedNote = noteViewModel.allNotes
         assertEquals(savedNote, note)
     }
 
