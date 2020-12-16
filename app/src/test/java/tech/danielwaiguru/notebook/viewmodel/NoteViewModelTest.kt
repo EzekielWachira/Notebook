@@ -2,12 +2,10 @@ package tech.danielwaiguru.notebook.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import junit.framework.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.junit.runner.RunWith
 import org.koin.core.context.startKoin
 import org.koin.test.KoinTest
 import org.koin.test.inject
@@ -22,7 +20,7 @@ import tech.danielwaiguru.notebook.ui.add.AddNoteViewModel
 import tech.danielwaiguru.notebook.ui.note.NoteViewModel
 import java.text.DateFormat
 
-@RunWith(AndroidJUnit4::class)
+
 class NoteViewModelTest : KoinTest{
     @Mock
     private lateinit var noteViewModel: NoteViewModel
@@ -46,7 +44,7 @@ class NoteViewModelTest : KoinTest{
     fun add_note_test() {
         val note = Note(noteTitle = "Test Note", noteText = "Test note text", createdAt = DateFormat.FULL.toString())
         addNoteViewModel.saveNote(note)
-        val savedNote = noteViewModel.allNotes
+        val savedNote = noteViewModel.allNotes.value
         assertEquals(savedNote, note)
     }
 
