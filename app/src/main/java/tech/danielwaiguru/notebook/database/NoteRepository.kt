@@ -5,7 +5,7 @@ import org.koin.core.inject
 
 class NoteRepository : KoinComponent{
     private val noteDao: NoteDao by inject()
-    val allNotes = noteDao.getAllNotes()
+    fun getAllNotes() = noteDao.getAllNotes()
     /**
      * insert a note
      */
