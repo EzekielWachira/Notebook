@@ -2,6 +2,7 @@ package tech.danielwaiguru.notebook.database
 
 import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.asLiveData
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -33,7 +34,7 @@ class NoteDaoTest {
     fun testAddingNote() = runBlockingTest {
         val note = Note(noteId = 1, noteTitle = "Test Note", noteText = "Test note text", createdAt = "16 December, 2020")
         noteDao.insertNote(note)
-        val retrievedNote = noteDao.getAllNotes().getOrAwaitValue()
+        val retrievedNote = noteDao.getAllNotes().asLiveData().getOrAwaitValue()
         assertThat(retrievedNote).contains(note)
     }
     @Test
@@ -42,7 +43,7 @@ class NoteDaoTest {
             1, "Test Note", "Test note text","16 December, 2020")
         noteDao.insertNote(note)
         noteDao.deleteNote(note)
-        val notes = noteDao.getAllNotes().getOrAwaitValue()
+        val notes = noteDao.getAllNotes().asLiveData().getOrAwaitValue()
         assertThat(notes).doesNotContain(note)
     }
     @Test
@@ -54,7 +55,7 @@ class NoteDaoTest {
             1, "Updated Test Note", "Updated note text", "17 December, 2020"
         )
         noteDao.updateNote(updatedNote)
-        val lastNote = noteDao.getAllNotes().getOrAwaitValue().last()
+        val lastNote = noteDao.getAllNotes().asLiveData().getOrAwaitValue().last()
         assertThat(lastNote.noteTitle).isEqualTo(updatedNote.noteTitle)
     }
     @After
