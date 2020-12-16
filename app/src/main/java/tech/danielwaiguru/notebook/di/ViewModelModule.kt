@@ -7,7 +7,7 @@ import tech.danielwaiguru.notebook.ui.edit.ReadNoteViewModel
 import tech.danielwaiguru.notebook.ui.note.NoteViewModel
 
 val viewModelModule = module {
-    viewModel { AddNoteViewModel() }
-    viewModel { ReadNoteViewModel() }
-    viewModel { NoteViewModel() }
+    viewModel { AddNoteViewModel(get()) }
+    viewModel { ReadNoteViewModel(get()) }
+    viewModel { NoteViewModel(get()) }
 }
