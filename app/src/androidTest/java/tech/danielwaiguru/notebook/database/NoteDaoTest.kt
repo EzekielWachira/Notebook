@@ -36,6 +36,27 @@ class NoteDaoTest {
         val retrievedNote = noteDao.getAllNotes().getOrAwaitValue()
         assertThat(retrievedNote).contains(note)
     }
+    @Test
+    fun testDeletingANote() = runBlockingTest {
+        val note = Note(
+            1, "Test Note", "Test note text","16 December, 2020")
+        noteDao.insertNote(note)
+        noteDao.deleteNote(note)
+        val notes = noteDao.getAllNotes().getOrAwaitValue()
+        assertThat(notes).doesNotContain(note)
+    }
+    @Test
+    fun testUpdatingANote() = runBlockingTest {
+        val note = Note(
+            1, "Test Note", "Test note text","16 December, 2020")
+        noteDao.insertNote(note)
+        val updatedNote = Note(
+            1, "Updated Test Note", "Updated note text", "17 December, 2020"
+        )
+        noteDao.updateNote(updatedNote)
+        val lastNote = noteDao.getAllNotes().getOrAwaitValue().last()
+        assertThat(lastNote.noteTitle).isEqualTo(updatedNote.noteTitle)
+    }
     @After
     fun teardown() {
         db.close()
