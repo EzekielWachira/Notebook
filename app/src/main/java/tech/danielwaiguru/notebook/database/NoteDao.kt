@@ -2,6 +2,7 @@ package tech.danielwaiguru.notebook.database
 
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
+import tech.danielwaiguru.notebook.model.Note
 
 @Dao
 interface NoteDao {

@@ -6,7 +6,7 @@ import org.koin.core.context.startKoin
 import org.koin.dsl.module
 import org.koin.test.AutoCloseKoinTest
 import org.koin.test.inject
-import tech.danielwaiguru.notebook.database.Note
+import tech.danielwaiguru.notebook.model.Note
 import tech.danielwaiguru.notebook.database.NoteRepository
 import tech.danielwaiguru.notebook.getOrAwaitValue
 import tech.danielwaiguru.notebook.ui.add.AddNoteViewModel

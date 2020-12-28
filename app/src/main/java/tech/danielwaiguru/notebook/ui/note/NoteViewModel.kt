@@ -3,7 +3,7 @@ package tech.danielwaiguru.notebook.ui.note
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
-import tech.danielwaiguru.notebook.database.Note
+import tech.danielwaiguru.notebook.model.Note
 import tech.danielwaiguru.notebook.database.NoteRepository
 
 class NoteViewModel(noteRepository: NoteRepository): ViewModel(){

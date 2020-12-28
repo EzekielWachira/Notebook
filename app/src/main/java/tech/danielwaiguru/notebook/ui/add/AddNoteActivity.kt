@@ -3,7 +3,7 @@ package tech.danielwaiguru.notebook.ui.add
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import tech.danielwaiguru.notebook.database.Note
+import tech.danielwaiguru.notebook.model.Note
 import tech.danielwaiguru.notebook.databinding.ActivityCreateNoteBinding
 import tech.danielwaiguru.notebook.utils.DateUtils
 

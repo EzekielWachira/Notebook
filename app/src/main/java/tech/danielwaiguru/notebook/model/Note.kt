@@ -1,4 +1,4 @@
-package tech.danielwaiguru.notebook.database
+package tech.danielwaiguru.notebook.model
 
 import android.os.Parcelable
 import androidx.room.Entity

@@ -9,7 +9,7 @@ import androidx.core.content.ContextCompat
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import tech.danielwaiguru.notebook.R
 import tech.danielwaiguru.notebook.common.Constants.NOTE_EXTRA
-import tech.danielwaiguru.notebook.database.Note
+import tech.danielwaiguru.notebook.model.Note
 import tech.danielwaiguru.notebook.databinding.ActivityReadNoteBinding
 import tech.danielwaiguru.notebook.utils.DateUtils
 

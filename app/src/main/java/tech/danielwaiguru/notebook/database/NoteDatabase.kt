@@ -2,6 +2,7 @@ package tech.danielwaiguru.notebook.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import tech.danielwaiguru.notebook.model.Note
 
 @Database(entities = [Note::class], version = 1, exportSchema = false)
 abstract class NoteDatabase : RoomDatabase(){

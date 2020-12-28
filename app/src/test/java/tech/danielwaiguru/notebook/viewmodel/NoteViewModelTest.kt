@@ -12,7 +12,7 @@ import org.koin.test.inject
 import org.mockito.Mock
 import org.mockito.Mockito.spy
 import org.mockito.MockitoAnnotations
-import tech.danielwaiguru.notebook.database.Note
+import tech.danielwaiguru.notebook.model.Note
 import tech.danielwaiguru.notebook.database.NoteRepository
 import tech.danielwaiguru.notebook.di.repositoryModule
 import tech.danielwaiguru.notebook.di.viewModelModule

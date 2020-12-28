@@ -3,7 +3,7 @@ package tech.danielwaiguru.notebook.ui.edit
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import tech.danielwaiguru.notebook.database.Note
+import tech.danielwaiguru.notebook.model.Note
 import tech.danielwaiguru.notebook.database.NoteRepository
 
 class ReadNoteViewModel(private val noteRepository: NoteRepository): ViewModel() {

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import tech.danielwaiguru.notebook.R
 import tech.danielwaiguru.notebook.common.Constants.NOTE_WITHOUT_TITLE
 import tech.danielwaiguru.notebook.common.Constants.NOTE_WITH_TITLE
-import tech.danielwaiguru.notebook.database.Note
+import tech.danielwaiguru.notebook.model.Note
 import tech.danielwaiguru.notebook.databinding.NoteItemWithTitleBinding
 import tech.danielwaiguru.notebook.databinding.NoteItemWithoutTitleBinding
 import java.util.*
