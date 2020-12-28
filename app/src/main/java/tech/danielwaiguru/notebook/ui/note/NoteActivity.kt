@@ -9,9 +9,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import tech.danielwaiguru.notebook.adapters.NoteAdapter
 import tech.danielwaiguru.notebook.common.Constants.NOTE_EXTRA
+import tech.danielwaiguru.notebook.common.extensions.gone
 import tech.danielwaiguru.notebook.common.extensions.visible
-import tech.danielwaiguru.notebook.model.Note
 import tech.danielwaiguru.notebook.databinding.ActivityNoteBinding
+import tech.danielwaiguru.notebook.model.Note
 import tech.danielwaiguru.notebook.ui.add.AddNoteActivity
 import tech.danielwaiguru.notebook.ui.edit.ReadNoteActivity
 
@@ -32,8 +33,11 @@ class NoteActivity : AppCompatActivity() {
          * adding an observer to the live data
          */
         noteViewModel.allNotes.observe(this, { note->
-            if (note.isEmpty()){
+            if (note.isNullOrEmpty()){
                 binding.noNotes.visible()
+            } else
+            {
+                binding.noNotes.gone()
             }
             noteAdapter.setData(note)
         })
