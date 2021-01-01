@@ -4,5 +4,5 @@ import org.koin.dsl.module
 import tech.danielwaiguru.notebook.database.NoteRepository
 
 val repositoryModule = module {
-    single { NoteRepository() }
+    single { NoteRepository(get()) }
 }

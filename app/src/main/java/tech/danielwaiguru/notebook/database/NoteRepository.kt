@@ -1,11 +1,8 @@
 package tech.danielwaiguru.notebook.database
 
-import org.koin.core.KoinComponent
-import org.koin.core.inject
 import tech.danielwaiguru.notebook.model.Note
 
-class NoteRepository : KoinComponent{
-    private val noteDao: NoteDao by inject()
+class NoteRepository(private val noteDao: NoteDao){
     fun getAllNotes() = noteDao.getAllNotes()
     /**
      * insert a note
