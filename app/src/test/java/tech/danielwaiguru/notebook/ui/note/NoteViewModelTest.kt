@@ -6,10 +6,8 @@ import org.junit.After
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
-import org.junit.runner.RunWith
 import org.koin.test.AutoCloseKoinTest
 import org.mockito.Mock
-import org.robolectric.RobolectricTestRunner
 import tech.danielwaiguru.notebook.database.NoteDao
 import tech.danielwaiguru.notebook.database.NoteDatabase
 import tech.danielwaiguru.notebook.database.NoteRepository
@@ -17,7 +15,7 @@ import tech.danielwaiguru.notebook.getOrAwaitValue
 import tech.danielwaiguru.notebook.model.Note
 import tech.danielwaiguru.notebook.ui.add.AddNoteViewModel
 import tech.danielwaiguru.notebook.ui.edit.ReadNoteViewModel
-@RunWith(RobolectricTestRunner::class)
+
 class NoteViewModelTest: AutoCloseKoinTest() {
     private lateinit var viewModel: NoteViewModel
     private lateinit var addNoteViewModel: AddNoteViewModel
