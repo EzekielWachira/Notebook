@@ -1,15 +1,12 @@
 package tech.danielwaiguru.notebook.utils
 
-import android.annotation.SuppressLint
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
-import java.time.format.FormatStyle
+import java.text.SimpleDateFormat
+import java.util.*
 
 object DateUtils {
-    @SuppressLint("NewApi")
     fun formatDate(): String {
-        val date = LocalDateTime.now()
-        val formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM)
-        return date.format(formatter)
+        val date = Date(System.currentTimeMillis())
+        val formatter = SimpleDateFormat("d MMM, yyyy HH:mm a", Locale.getDefault())
+        return formatter.format(date)
     }
 }

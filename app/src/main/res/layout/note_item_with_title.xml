@@ -43,7 +43,7 @@
         android:id="@+id/textViewDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/dateColor"
+        android:textColor="@color/textColor"
         tools:text="@string/date_hint"
         android:textColorHint="@color/textColor"
         app:layout_constraintTop_toBottomOf="@id/textViewNote"
