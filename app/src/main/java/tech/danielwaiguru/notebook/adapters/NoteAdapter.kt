@@ -50,7 +50,8 @@ class NoteAdapter(private val context: Context, private val listener: (Note) -> 
         fun bind(context: Context, note: Note){
             itemBinding.textViewNote.text = note.noteText
             itemBinding.textViewDate.text = note.createdAt
-            itemBinding.noteItemLayout.animation = AnimationUtils.loadAnimation(context, R.anim.fade_in)
+            itemBinding.noteItemLayout.animation = AnimationUtils
+                .loadAnimation(context, R.anim.fade_in)
         }
     }
 

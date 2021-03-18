@@ -25,6 +25,11 @@
 
         <!-- <item name="floatingActionButtonStyle">@style/FabStyle</item> -->
     </style>
+    <style name="AppTheme.SplashScreen" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
     <style name="MainActionBar" parent="ThemeOverlay.AppCompat.Light">
         <item name="android:colorBackground">@color/colorSearchBackground</item>
         <item name="android:textColor">@color/textColor</item>
