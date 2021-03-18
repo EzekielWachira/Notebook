@@ -15,3 +15,6 @@ I used the following components in development
 
 ##### Read/Edit Note Screen
 <image src="screenshots/read.png" height="600px"/>
+
+## License
+
