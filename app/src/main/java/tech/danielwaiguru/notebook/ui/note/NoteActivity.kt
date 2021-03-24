@@ -51,10 +51,10 @@ class NoteActivity : AppCompatActivity() {
          */
         noteViewModel.allNotes.observe(this, { note->
             if (note.isNullOrEmpty()){
-                binding.noNotes.visible()
+                binding.noNoteLayout.visible()
             } else
             {
-                binding.noNotes.gone()
+                binding.noNoteLayout.gone()
             }
             noteAdapter.setData(note)
         })

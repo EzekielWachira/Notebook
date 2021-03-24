@@ -26,6 +26,6 @@
     <string name="type_a_note">Type a note…</string>
     <string name="navigate_back">Navigate Back</string>
     <string name="delete">Delete</string>
-    <string name="no_notes">No Notes Available, Add Some</string>
+    <string name="no_notes">No Note Available, Add Some</string>
     <string name="fab_description">Add a new note</string>
 </resources>
