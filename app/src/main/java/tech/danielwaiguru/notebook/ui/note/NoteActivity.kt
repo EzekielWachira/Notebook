@@ -18,11 +18,11 @@ package tech.danielwaiguru.notebook.ui.note
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import tech.danielwaiguru.notebook.R
 import tech.danielwaiguru.notebook.adapters.NoteAdapter
 import tech.danielwaiguru.notebook.common.Constants.NOTE_EXTRA
 import tech.danielwaiguru.notebook.common.extensions.gone
@@ -39,6 +39,7 @@ class NoteActivity : AppCompatActivity() {
             note -> noteItemClicked(note)
     } }
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
         binding = ActivityNoteBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -50,10 +51,10 @@ class NoteActivity : AppCompatActivity() {
          */
         noteViewModel.allNotes.observe(this, { note->
             if (note.isNullOrEmpty()){
-                binding.noNotes.visible()
+                binding.noNoteLayout.visible()
             } else
             {
-                binding.noNotes.gone()
+                binding.noNoteLayout.gone()
             }
             noteAdapter.setData(note)
         })
@@ -75,15 +76,8 @@ class NoteActivity : AppCompatActivity() {
         startActivity(intent)
     }
     private fun searchNote(){
-        binding.searchNote.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
-            override fun onTextChanged(charSequence: CharSequence?, start: Int, before: Int, count: Int) {
-                noteAdapter.filter.filter(charSequence.toString())
-            }
-
-            override fun afterTextChanged(s: Editable?){}
-
-        })
+        binding.searchNote.doOnTextChanged { text, _, _, _ ->
+            noteAdapter.filter.filter(text.toString())
+        }
     }
 }

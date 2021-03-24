@@ -30,6 +30,7 @@
             android:label="Read Note"/>
         <activity android:name=".ui.add.AddNoteActivity" />
         <activity android:name=".ui.note.NoteActivity"
+            android:theme="@style/AppTheme.SplashScreen"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

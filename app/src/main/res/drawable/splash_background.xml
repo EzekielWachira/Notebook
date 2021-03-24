@@ -15,15 +15,17 @@
   ~    limitations under the License.
   -->
 
-<resources>
-    <color name="colorPrimary">#292929</color>
-    <color name="colorPrimaryDark">#292929</color>
-    <color name="colorAccent">#62ebff</color>
-    <color name="searchLayout">#0091EA</color>
-    <color name="primary">#3BC0F9</color>
-    <color name="textColor">#FFF</color>
-    <color name="dateColor">#424242</color>
-    <color name="colorSearchBackground">#333333</color>
-    <color name="colorHint">#7B7B7B</color>
-    <color name="textColorSecondary">#fff</color>
-</resources>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:opacity="opaque">
+    <item android:drawable="@color/searchLayout" />
+    <item>
+        <bitmap android:gravity="center"
+            android:src="@mipmap/ic_launcher_round" />
+    </item>
+</layer-list>
+    <!--android:bottom="100dp"
+    android:top="100dp"
+    android:right="100dp"
+    android:left="100dp">
+<bitmap android:gravity="center"
+android:src="@mipmap/ic_launcher" />&ndash;&gt;-->
