@@ -16,6 +16,14 @@ I used the following components in development
 ##### Read/Edit Note Screen
 <image src="screenshots/read.png" height="600px"/>
 
+<a href='https://play.google.com/store/apps/details?id=tech.danielwaiguru.notebook'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' width='150'/></a>
+
+#### Attributions
+
+Google Play and the Google Play logo are trademarks of Google LLC.
+
+<a target="_blank" href="https://icons8.com/icons/set/github">GitHub icon</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+
 ## License
 
 ```
