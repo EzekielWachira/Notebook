@@ -16,7 +16,7 @@
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-parcelize'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
@@ -60,7 +60,7 @@ android {
 dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     def room_version = "2.2.6"
-    def lifecycle_version = "2.3.0"
+    def lifecycle_version = "2.3.1"
     def koin_version = '2.1.6'
     def coroutines_test = "1.4.2"
     def arch_version = "2.1.0"
@@ -83,13 +83,13 @@ dependencies {
     // Lifecycles only (without ViewModel or LiveData)
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
     //Coroutine
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.3'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3'
     //Room Test Helpers
     testImplementation "androidx.room:room-testing:$room_version"
 
     //Material design
-    implementation 'com.google.android.material:material:1.4.0-alpha01'
+    implementation 'com.google.android.material:material:1.4.0-alpha02'
     //Rounded image view
     implementation 'com.makeramen:roundedimageview:2.3.0'
 
