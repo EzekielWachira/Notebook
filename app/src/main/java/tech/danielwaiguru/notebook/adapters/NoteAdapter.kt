@@ -109,7 +109,8 @@ class NoteAdapter(private val context: Context, private val listener: (Note) -> 
                     val filterPattern = constraint.toString()
                         .toLowerCase(Locale.ROOT)
                     for (note in notes){
-                        if (note.noteText.toLowerCase(Locale.ROOT).contains(filterPattern)){
+                        if (note.noteText.toLowerCase(Locale.ROOT).contains(filterPattern)
+                            || note.noteTitle.toLowerCase(Locale.ROOT).contains(filterPattern)){
                             resultsList.add(note)
                         }
                     }
