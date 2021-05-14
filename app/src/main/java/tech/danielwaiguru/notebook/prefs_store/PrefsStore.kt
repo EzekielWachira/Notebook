@@ -14,16 +14,11 @@
  *    limitations under the License.
  */
 
-package tech.danielwaiguru.notebook.di
+package tech.danielwaiguru.notebook.prefs_store
 
-import org.koin.androidx.viewmodel.dsl.viewModel
-import org.koin.dsl.module
-import tech.danielwaiguru.notebook.ui.add.AddNoteViewModel
-import tech.danielwaiguru.notebook.ui.edit.ReadNoteViewModel
-import tech.danielwaiguru.notebook.ui.note.NoteViewModel
+import kotlinx.coroutines.flow.Flow
 
-val viewModelModule = module {
-    viewModel { AddNoteViewModel(get()) }
-    viewModel { ReadNoteViewModel(get()) }
-    viewModel { NoteViewModel(get(), get()) }
+interface PrefsStore {
+    fun isNightMode(): Flow<Boolean>
+    suspend fun toggleNightMode()
 }

@@ -28,4 +28,6 @@
     <string name="delete">Delete</string>
     <string name="no_notes">No Note Available, Add Some</string>
     <string name="fab_description">Add a new note</string>
+    <string name="save">Save</string>
+    <string name="toggle_light_and_night_mode">Toggle light and night mode</string>
 </resources>

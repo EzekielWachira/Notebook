@@ -16,8 +16,9 @@
   -->
 
 <resources>
-    <color name="colorPrimary">#292929</color>
-    <color name="colorPrimaryDark">#292929</color>
+    <!--#292929-->
+    <color name="colorPrimary">#161B22</color>
+    <color name="colorPrimaryDark">#161B22</color>
     <color name="colorAccent">#62ebff</color>
     <color name="searchLayout">#0091EA</color>
     <color name="primary">#3BC0F9</color>

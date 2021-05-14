@@ -16,14 +16,11 @@
 
 package tech.danielwaiguru.notebook.di
 
-import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
-import tech.danielwaiguru.notebook.ui.add.AddNoteViewModel
-import tech.danielwaiguru.notebook.ui.edit.ReadNoteViewModel
-import tech.danielwaiguru.notebook.ui.note.NoteViewModel
+import tech.danielwaiguru.notebook.prefs_store.PrefsStore
+import tech.danielwaiguru.notebook.prefs_store.PrefsStoreImpl
 
-val viewModelModule = module {
-    viewModel { AddNoteViewModel(get()) }
-    viewModel { ReadNoteViewModel(get()) }
-    viewModel { NoteViewModel(get(), get()) }
+val appModule = module {
+    single<PrefsStore> { PrefsStoreImpl(androidContext()) }
 }

@@ -18,7 +18,9 @@ package tech.danielwaiguru.notebook.ui.note
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -46,9 +48,15 @@ class NoteActivity : AppCompatActivity() {
         setupRecyclerView()
         initListeners()
         searchNote()
-        /**
-         * adding an observer to the live data
-         */
+        subscribers()
+    }
+    private fun initListeners() {
+        with(binding) {
+            fabAddNote.setOnClickListener { initUi() }
+            toggleNight.setOnClickListener { toggleNightMode() }
+        }
+    }
+    private fun subscribers() {
         noteViewModel.allNotes.observe(this, { note->
             if (note.isNullOrEmpty()){
                 binding.noNoteLayout.visible()
@@ -58,9 +66,15 @@ class NoteActivity : AppCompatActivity() {
             }
             noteAdapter.setData(note)
         })
-    }
-    private fun initListeners(){
-        binding.fabAddNote.setOnClickListener { initUi() }
+        noteViewModel.isNightMode.observe(this, { isNightMode ->
+            val defaultMode = if (isNightMode) {
+                AppCompatDelegate.MODE_NIGHT_YES
+            } else {
+                AppCompatDelegate.MODE_NIGHT_NO
+            }
+            setupThemeIcon(defaultMode)
+            AppCompatDelegate.setDefaultNightMode(defaultMode)
+        })
     }
     private fun setupRecyclerView() = binding.notesRecyclerView.apply {
         this.adapter = noteAdapter
@@ -78,6 +92,16 @@ class NoteActivity : AppCompatActivity() {
     private fun searchNote(){
         binding.searchNote.doOnTextChanged { text, _, _, _ ->
             noteAdapter.filter.filter(text.toString())
+        }
+    }
+    private fun toggleNightMode() {
+        noteViewModel.toggleNightMode()
+    }
+    private fun setupThemeIcon(mode: Int) {
+        if (mode == AppCompatDelegate.MODE_NIGHT_YES){
+            binding.toggleNight.setImageResource(R.drawable.ic_night_mode)
+        } else {
+            binding.toggleNight.setImageResource(R.drawable.ic_light_mode)
         }
     }
 }
