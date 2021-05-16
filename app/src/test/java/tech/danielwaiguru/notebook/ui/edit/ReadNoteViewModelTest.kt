@@ -27,13 +27,14 @@ import org.mockito.MockitoAnnotations
 import tech.danielwaiguru.notebook.base.BaseViewModelTest
 import tech.danielwaiguru.notebook.database.NoteRepositoryImpl
 import tech.danielwaiguru.notebook.model.Note
+import java.util.*
 
 @ExperimentalCoroutinesApi
 class ReadNoteViewModelTest : BaseViewModelTest() {
     private lateinit var readNoteViewModel: ReadNoteViewModel
     private val noteRepository: NoteRepositoryImpl = mock()
     private val dummyNote = Note(
-        1, "title", "desc", "20 Nov, 2020"
+        1, "title", "desc", Date().time
     )
 
     @Before
