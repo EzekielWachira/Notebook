@@ -19,7 +19,10 @@ package tech.danielwaiguru.notebook.model
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
 import kotlinx.parcelize.Parcelize
+import tech.danielwaiguru.notebook.database.converters.Converters
+import java.util.*
 
 
 @Entity(tableName = "notes")
@@ -29,5 +32,5 @@ data class Note (
     val noteId: Int = 0,
     var noteTitle: String,
     var noteText: String,
-    var createdAt: String
+    var createdAt: Long
 ): Parcelable

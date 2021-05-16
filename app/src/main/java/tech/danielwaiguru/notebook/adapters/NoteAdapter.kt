@@ -29,6 +29,7 @@ import tech.danielwaiguru.notebook.common.Constants.NOTE_WITH_TITLE
 import tech.danielwaiguru.notebook.model.Note
 import tech.danielwaiguru.notebook.databinding.NoteItemWithTitleBinding
 import tech.danielwaiguru.notebook.databinding.NoteItemWithoutTitleBinding
+import tech.danielwaiguru.notebook.utils.DateUtils
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -42,14 +43,14 @@ class NoteAdapter(private val context: Context, private val listener: (Note) -> 
             itemBinding.noteItem.animation = AnimationUtils.loadAnimation(context, R.anim.fade_in)
             itemBinding.textViewTitle.text = note.noteTitle
             itemBinding.textViewNote.text = note.noteText
-            itemBinding.textViewDate.text = note.createdAt
+            itemBinding.textViewDate.text = DateUtils.formatTimeToDate(note.createdAt)
         }
     }
     class NoteWithoutViewHolder(private val itemBinding: NoteItemWithoutTitleBinding):
         RecyclerView.ViewHolder(itemBinding.root){
         fun bind(context: Context, note: Note){
             itemBinding.textViewNote.text = note.noteText
-            itemBinding.textViewDate.text = note.createdAt
+            itemBinding.textViewDate.text = DateUtils.formatTimeToDate(note.createdAt)
             itemBinding.noteItemLayout.animation = AnimationUtils
                 .loadAnimation(context, R.anim.fade_in)
         }
@@ -110,7 +111,8 @@ class NoteAdapter(private val context: Context, private val listener: (Note) -> 
                         .toLowerCase(Locale.ROOT)
                     for (note in notes){
                         if (note.noteText.toLowerCase(Locale.ROOT).contains(filterPattern)
-                            || note.noteTitle.toLowerCase(Locale.ROOT).contains(filterPattern)){
+                            || note.noteTitle.toLowerCase(Locale.ROOT).contains(filterPattern)
+                        ){
                             resultsList.add(note)
                         }
                     }

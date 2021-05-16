@@ -18,9 +18,12 @@ package tech.danielwaiguru.notebook.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import tech.danielwaiguru.notebook.database.converters.Converters
 import tech.danielwaiguru.notebook.model.Note
 
-@Database(entities = [Note::class], version = 1, exportSchema = false)
+@Database(entities = [Note::class], version = 2, exportSchema = false)
+@TypeConverters(Converters::class)
 abstract class NoteDatabase : RoomDatabase(){
     abstract fun noteDao(): NoteDao
     /*companion object{
