@@ -16,20 +16,26 @@
 
 package tech.danielwaiguru.notebook.database
 
+import kotlinx.coroutines.flow.Flow
+import tech.danielwaiguru.notebook.domain.NoteRepository
 import tech.danielwaiguru.notebook.model.Note
 
-class NoteRepository(private val noteDao: NoteDao){
-    fun getAllNotes() = noteDao.getAllNotes()
+class NoteRepositoryImpl(private val noteDao: NoteDao): NoteRepository{
+    override fun getAllNotes() = noteDao.getAllNotes()
     /**
      * insert a note
      */
-    suspend fun insertNote(note: Note){
+    override suspend fun insertNote(note: Note){
         noteDao.insertNote(note)
     }
-    suspend fun updateNote(note: Note){
+    override suspend fun updateNote(note: Note){
         noteDao.updateNote(note)
     }
-    suspend fun deleteNote(note: Note){
+    override suspend fun deleteNote(note: Note){
         noteDao.deleteNote(note)
+    }
+
+    override fun searchNote(searchQuery: String): Flow<List<Note>> {
+        return noteDao.searchNote(searchQuery)
     }
 }

@@ -20,23 +20,18 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
-import android.widget.Filter
-import android.widget.Filterable
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import tech.danielwaiguru.notebook.R
 import tech.danielwaiguru.notebook.common.Constants.NOTE_WITHOUT_TITLE
 import tech.danielwaiguru.notebook.common.Constants.NOTE_WITH_TITLE
-import tech.danielwaiguru.notebook.model.Note
 import tech.danielwaiguru.notebook.databinding.NoteItemWithTitleBinding
 import tech.danielwaiguru.notebook.databinding.NoteItemWithoutTitleBinding
+import tech.danielwaiguru.notebook.model.Note
 import tech.danielwaiguru.notebook.utils.DateUtils
-import java.util.*
-import kotlin.collections.ArrayList
 
 class NoteAdapter(private val context: Context, private val listener: (Note) -> Unit):
-    RecyclerView.Adapter<RecyclerView.ViewHolder>(), Filterable {
-    private var notes = emptyList<Note>() //Cached copy of notes
-    private var searchableList = emptyList<Note>()
+    ListAdapter<Note, RecyclerView.ViewHolder>(NoteDiffCallback) {
     class NoteWithTitleViewHolder(private val itemBinding: NoteItemWithTitleBinding):
         RecyclerView.ViewHolder(itemBinding.root){
         fun bind(context: Context, note: Note){
@@ -70,10 +65,8 @@ class NoteAdapter(private val context: Context, private val listener: (Note) -> 
         }
     }
 
-    override fun getItemCount(): Int = searchableList.size
-
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val note = searchableList[position]
+        val note = getItem(position)
         if (getItemViewType(position) == NOTE_WITH_TITLE){
             (holder as NoteWithTitleViewHolder).bind(context, note)
         }
@@ -86,45 +79,11 @@ class NoteAdapter(private val context: Context, private val listener: (Note) -> 
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if (searchableList[position].noteTitle == ""){
+        return if (getItem(position).noteTitle == ""){
             NOTE_WITHOUT_TITLE
         }
         else {
             NOTE_WITH_TITLE
-        }
-    }
-    internal fun setData(notes: List<Note>){
-        this.searchableList = ArrayList(notes)
-        this.notes = notes
-        notifyDataSetChanged()
-    }
-
-    override fun getFilter(): Filter {
-        return object : Filter() {
-            private val filterResults = FilterResults()
-            override fun performFiltering(constraint: CharSequence?): FilterResults {
-                searchableList = if (constraint.isNullOrEmpty()){
-                    notes
-                } else {
-                    val resultsList = ArrayList<Note>()
-                    val filterPattern = constraint.toString()
-                        .toLowerCase(Locale.ROOT)
-                    for (note in notes){
-                        if (note.noteText.toLowerCase(Locale.ROOT).contains(filterPattern)
-                            || note.noteTitle.toLowerCase(Locale.ROOT).contains(filterPattern)
-                        ){
-                            resultsList.add(note)
-                        }
-                    }
-                    resultsList
-                }
-                filterResults.values = searchableList
-                return filterResults
-            }
-            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-                searchableList = results?.values as ArrayList<Note>
-                notifyDataSetChanged()
-            }
         }
     }
 }

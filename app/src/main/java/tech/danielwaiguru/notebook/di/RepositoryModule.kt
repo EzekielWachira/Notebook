@@ -17,8 +17,9 @@
 package tech.danielwaiguru.notebook.di
 
 import org.koin.dsl.module
-import tech.danielwaiguru.notebook.database.NoteRepository
+import tech.danielwaiguru.notebook.database.NoteRepositoryImpl
+import tech.danielwaiguru.notebook.domain.NoteRepository
 
 val repositoryModule = module {
-    single { NoteRepository(get()) }
+    single <NoteRepository>{ NoteRepositoryImpl(get()) }
 }

@@ -16,24 +16,25 @@
 
 package tech.danielwaiguru.notebook.ui.note
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import tech.danielwaiguru.notebook.domain.NoteRepository
 import tech.danielwaiguru.notebook.model.Note
-import tech.danielwaiguru.notebook.database.NoteRepository
 import tech.danielwaiguru.notebook.prefs_store.PrefsStore
 
-class NoteViewModel(noteRepository: NoteRepository, private val prefsStore: PrefsStore): ViewModel(){
+class NoteViewModel(
+    private val noteRepo: NoteRepository, private val prefsStore: PrefsStore): ViewModel(){
     //private val noteRepository: NoteRepository by inject()
-    val allNotes: LiveData<List<Note>> = noteRepository.getAllNotes().asLiveData()
+    val allNotes: LiveData<List<Note>> = noteRepo.getAllNotes().asLiveData()
     val isNightMode = prefsStore.isNightMode().asLiveData()
     fun toggleNightMode() {
         viewModelScope.launch {
             prefsStore.toggleNightMode()
         }
     }
+    fun searchNote(searchQuery: String): LiveData<List<Note>> =
+        noteRepo.searchNote(searchQuery).asLiveData()
     /*init {
         val noteDao = NoteDatabase.getInstance(application).noteDao()
         noteRepository = NoteRepository(noteDao)

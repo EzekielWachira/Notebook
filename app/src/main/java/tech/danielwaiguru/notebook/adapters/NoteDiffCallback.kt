@@ -14,16 +14,17 @@
  *    limitations under the License.
  */
 
-package tech.danielwaiguru.notebook.ui.add
+package tech.danielwaiguru.notebook.adapters
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.launch
-import tech.danielwaiguru.notebook.domain.NoteRepository
+import androidx.recyclerview.widget.DiffUtil
 import tech.danielwaiguru.notebook.model.Note
 
-class AddNoteViewModel(private val noteRepository: NoteRepository) : ViewModel() {
-    fun saveNote(note: Note) = viewModelScope.launch {
-        noteRepository.insertNote(note)
+object NoteDiffCallback: DiffUtil.ItemCallback<Note>() {
+    override fun areItemsTheSame(oldItem: Note, newItem: Note): Boolean {
+        return oldItem.noteId == newItem.noteId
+    }
+
+    override fun areContentsTheSame(oldItem: Note, newItem: Note): Boolean {
+        return oldItem == newItem
     }
 }

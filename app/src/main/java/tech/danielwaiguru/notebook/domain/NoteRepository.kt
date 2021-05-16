@@ -14,36 +14,15 @@
  *    limitations under the License.
  */
 
-package tech.danielwaiguru.notebook.database
+package tech.danielwaiguru.notebook.domain
 
-import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 import tech.danielwaiguru.notebook.model.Note
 
-@Dao
-interface NoteDao {
-    /**
-     * function to insert a note
-     */
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertNote(note: Note): Long
-    /**
-     * function to update a note
-     */
-    @Update
-    suspend fun updateNote(note: Note)
-    /**
-     * function to delete a note
-     */
-    @Delete
-    suspend fun deleteNote(note: Note)
-    /**
-     * function to retrieve all notes from the database
-     */
-    @Query("SELECT * FROM notes ORDER BY created_at DESC")
+interface NoteRepository {
     fun getAllNotes(): Flow<List<Note>>
-
-    @Query("SELECT * FROM notes WHERE note_title " +
-            "LIKE :searchQuery OR note_text LIKE :searchQuery ORDER BY created_at DESC")
+    suspend fun insertNote(note: Note)
+    suspend fun updateNote(note: Note)
+    suspend fun deleteNote(note: Note)
     fun searchNote(searchQuery: String): Flow<List<Note>>
 }
