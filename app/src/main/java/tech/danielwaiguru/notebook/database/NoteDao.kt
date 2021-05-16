@@ -40,6 +40,6 @@ interface NoteDao {
     /**
      * function to retrieve all notes from the database
      */
-    @Query("SELECT * FROM notes")
+    @Query("SELECT * FROM notes ORDER BY created_at DESC")
     fun getAllNotes(): Flow<List<Note>>
 }

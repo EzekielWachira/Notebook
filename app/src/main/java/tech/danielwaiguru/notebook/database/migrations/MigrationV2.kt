@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 
-package tech.danielwaiguru.notebook.database.migration
+package tech.danielwaiguru.notebook.database.migrations
 
 import android.content.ContentValues
 import android.database.Cursor
@@ -27,7 +27,8 @@ import java.util.*
 class MigrationV2: Migration(1, 2) {
     override fun migrate(database: SupportSQLiteDatabase) {
         database
-            .execSQL("CREATE TABLE notes_new (noteId INTEGER, noteTitle TEXT, noteText TEXT, createdAt INTEGER, PRIMARY KEY(noteId))")
+            .execSQL("CREATE TABLE notes_new (noteId INTEGER, noteTitle TEXT, noteText TEXT," +
+                    " createdAt INTEGER, PRIMARY KEY(noteId))")
         //Copy all the data
         /*database.execSQL(
             "INSERT INTO notes_database_new (note_id, note_title, note_text, created_at) SELECT noteId, noteTitle, noteText, createdAt FROM $DB_NAME"

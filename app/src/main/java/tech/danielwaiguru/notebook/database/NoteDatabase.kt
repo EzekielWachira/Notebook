@@ -22,7 +22,7 @@ import androidx.room.TypeConverters
 import tech.danielwaiguru.notebook.database.converters.Converters
 import tech.danielwaiguru.notebook.model.Note
 
-@Database(entities = [Note::class], version = 2, exportSchema = false)
+@Database(entities = [Note::class], version = 3, exportSchema = true)
 @TypeConverters(Converters::class)
 abstract class NoteDatabase : RoomDatabase(){
     abstract fun noteDao(): NoteDao
