@@ -14,49 +14,45 @@
  *    limitations under the License.
  */
 
-package tech.danielwaiguru.notebook.database
+package tech.danielwaiguru.notebook.base
 
-import androidx.lifecycle.asLiveData
+import android.content.Context
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
-import androidx.test.espresso.matcher.ViewMatchers.assertThat
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.filters.SmallTest
-import kotlinx.coroutines.runBlocking
-
-import org.hamcrest.Matchers.equalTo
+import com.github.testcoroutinesrule.TestCoroutineRule
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.After
 import org.junit.Before
-import org.junit.Test
+import org.junit.Rule
 import org.junit.runner.RunWith
-import tech.danielwaiguru.notebook.model.Note
-import tech.danielwaiguru.notebook.utils.getOrAwaitValue
+import org.robolectric.RobolectricTestRunner
+import tech.danielwaiguru.notebook.database.NoteDao
+import tech.danielwaiguru.notebook.database.NoteDatabase
+import tech.danielwaiguru.notebook.utils.KoinTestRule
 
-@RunWith(AndroidJUnit4::class)
-@SmallTest
-class NoteDatabaseTest {
-    private lateinit var noteDao: NoteDao
+abstract class BaseTest: BaseKoinTest() {
+    @get: Rule
+    val rule = InstantTaskExecutorRule()
+
+    @ExperimentalCoroutinesApi
+    @get:Rule
+    val testCoroutineRule = TestCoroutineRule()
+    protected lateinit var noteDao: NoteDao
     private lateinit var db: NoteDatabase
-    private val dummyNote = Note(
-        1, "title", "desc", "20 Nov, 2020"
-    )
     @Before
-    fun setup() {
+    open fun setup() {
+        val context = ApplicationProvider.getApplicationContext<Context>()
         db = Room.inMemoryDatabaseBuilder(
-            ApplicationProvider.getApplicationContext(), NoteDatabase::class.java)
+            context, NoteDatabase::class.java)
             .allowMainThreadQueries()
             .build()
         noteDao = db.noteDao()
     }
-    @Test
-    fun addNote() = runBlocking {
-        noteDao.insertNote(dummyNote)
-        val data = noteDao.getAllNotes().asLiveData().getOrAwaitValue()
-        assertThat(data, equalTo(null))
-    }
-
     @After
-    fun tearDownDb() {
+    open fun tearDownDb() {
+        db.clearAllTables()
         db.close()
     }
 }

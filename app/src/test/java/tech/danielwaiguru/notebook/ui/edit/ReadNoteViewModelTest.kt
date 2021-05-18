@@ -22,8 +22,6 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
 import org.junit.Test
-import org.mockito.MockitoAnnotations
-
 import tech.danielwaiguru.notebook.base.BaseViewModelTest
 import tech.danielwaiguru.notebook.database.NoteRepositoryImpl
 import tech.danielwaiguru.notebook.model.Note
@@ -39,7 +37,6 @@ class ReadNoteViewModelTest : BaseViewModelTest() {
 
     @Before
     fun setup() {
-        MockitoAnnotations.initMocks(this)
         readNoteViewModel = ReadNoteViewModel(noteRepository)
     }
     @Test

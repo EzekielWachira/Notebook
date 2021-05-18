@@ -14,34 +14,22 @@
  *    limitations under the License.
  */
 
-package tech.danielwaiguru.notebook.ui.add
+package tech.danielwaiguru.notebook.data
 
-import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.verify
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.google.common.truth.Truth
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runBlockingTest
-import org.junit.Before
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.test.TestCoroutineDispatcher
+import kotlinx.coroutines.test.TestCoroutineScope
 import org.junit.Test
-import tech.danielwaiguru.notebook.base.BaseViewModelTest
+import org.junit.runner.RunWith
+import tech.danielwaiguru.notebook.base.BaseTest
 import tech.danielwaiguru.notebook.database.NoteRepositoryImpl
+import tech.danielwaiguru.notebook.domain.NoteRepository
 import tech.danielwaiguru.notebook.model.Note
 import java.util.*
 
-class AddNoteViewModelTest : BaseViewModelTest() {
-    private lateinit var addNoteViewModel: AddNoteViewModel
-    private val noteRepository: NoteRepositoryImpl = mock()
-
-    @Before
-    fun setup() {
-        addNoteViewModel = AddNoteViewModel(noteRepository)
-    }
-    @ExperimentalCoroutinesApi
-    @Test
-    fun `addNote calls repository to store a note`() = runBlockingTest {
-        val dummyNote = Note(
-            1, "title", "desc", Date().time
-        )
-        addNoteViewModel.saveNote(dummyNote)
-        verify(noteRepository).insertNote(dummyNote)
-    }
-}
+val dummyNote = Note(1, "Test title", "Note title", Date().time)
+val updateDummyNote = Note(1, "Test Updated", "Note updated", Date().time)
