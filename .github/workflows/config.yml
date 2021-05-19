@@ -20,8 +20,7 @@ jobs:
         env:
           FIREBASE_SECRET: ${{secrets.FIREBASE_SECRET}}
         run: echo $FIREBASE_SECRET > app/google-services.json
-      - name: Run Unit Test
-        run: ./gradlew test
+
       - name: Build Project
         run: ./gradlew assemble
 
@@ -42,9 +41,17 @@ jobs:
         env:
           FIREBASE_SECRET: ${{secrets.FIREBASE_SECRET}}
         run: echo $FIREBASE_SECRET > app/google-services.json
+      - name: Run Unit Test
+        run: ./gradlew test
       - name: Instrumentation tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: ${{ matrix.api-level }}
           arch: x86
           script: ./gradlew connectedDebugAndroidTest
+
+      - name: Upload reports
+        uses: actions/upload-artifact@v1
+        with:
+          name: reports
+          path: app/build/reports
