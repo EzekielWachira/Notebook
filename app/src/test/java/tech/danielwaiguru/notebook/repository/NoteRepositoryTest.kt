@@ -45,7 +45,7 @@ class NoteRepositoryTest : BaseTest() {
     fun `adding a note actually stores the note`() {
         testCoroutineRule.runBlockingTest {
             noteRepo.insertNote(dummyNote)
-            val data = noteRepo.getAllNotes().asLiveData().getOrAwaitValue()
+            val data = noteRepo.getAllNotes("").asLiveData().getOrAwaitValue()
             Truth.assertThat(data).contains(dummyNote)
         }
     }
@@ -54,7 +54,7 @@ class NoteRepositoryTest : BaseTest() {
         testCoroutineRule.runBlockingTest {
             noteRepo.insertNote(dummyNote)
             noteRepo.deleteNote(dummyNote)
-            val data = noteRepo.getAllNotes().asLiveData().getOrAwaitValue()
+            val data = noteRepo.getAllNotes("").asLiveData().getOrAwaitValue()
             Truth.assertThat(data.size).isEqualTo(0)
         }
     }
@@ -62,7 +62,7 @@ class NoteRepositoryTest : BaseTest() {
     fun `update a note`() = testCoroutineRule.runBlockingTest {
         noteRepo.insertNote(dummyNote)
         noteRepo.updateNote(updateDummyNote)
-        val data = noteRepo.getAllNotes().asLiveData().getOrAwaitValue()
+        val data = noteRepo.getAllNotes("").asLiveData().getOrAwaitValue()
         Truth.assertThat(data[0].noteTitle).isEqualTo("Test Updated")
     }
 }

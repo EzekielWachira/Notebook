@@ -23,6 +23,22 @@ jobs:
 
       - name: Build Project
         run: ./gradlew assemble
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v1
+      - name: Set Up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Decrypt google-services.json
+        env:
+          FIREBASE_SECRET: ${{secrets.FIREBASE_SECRET}}
+        run: echo $FIREBASE_SECRET > app/google-services.json
+
+      - name: Unit Test
+        run: ./gradlew test
 
   instrumented-tests:
     runs-on: macOS-latest
@@ -41,8 +57,7 @@ jobs:
         env:
           FIREBASE_SECRET: ${{secrets.FIREBASE_SECRET}}
         run: echo $FIREBASE_SECRET > app/google-services.json
-      - name: Run Unit Test
-        run: ./gradlew test
+
       - name: Instrumentation tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
