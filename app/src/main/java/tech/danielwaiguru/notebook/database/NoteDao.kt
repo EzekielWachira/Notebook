@@ -37,13 +37,15 @@ interface NoteDao {
      */
     @Delete
     suspend fun deleteNote(note: Note)
-    /**
-     * function to retrieve all notes from the database
-     */
-    @Query("SELECT * FROM notes ORDER BY created_at DESC")
-    fun getAllNotes(): Flow<List<Note>>
+
 
     @Query("SELECT * FROM notes WHERE note_title " +
             "LIKE :searchQuery OR note_text LIKE :searchQuery ORDER BY created_at DESC")
     fun searchNote(searchQuery: String): Flow<List<Note>>
+    /**
+     * function to retrieve all notes and filtered ones from the database
+     */
+    @Query("SELECT * FROM notes WHERE note_title LIKE '%' || :searchQuery || '%' " +
+            "OR note_text LIKE '%' || :searchQuery || '%' ORDER BY created_at DESC")
+    fun getAllNotes(searchQuery: String): Flow<List<Note>>
 }

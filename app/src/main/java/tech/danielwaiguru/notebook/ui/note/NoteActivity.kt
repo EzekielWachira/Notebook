@@ -18,8 +18,6 @@ package tech.danielwaiguru.notebook.ui.note
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -48,9 +46,10 @@ class NoteActivity : AppCompatActivity(){
         binding = ActivityNoteBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupRecyclerView()
+        subscribers()
         initListeners()
         searchNote()
-        subscribers()
+
         Log.i("Note", "Creating")
     }
     private fun initListeners() {
@@ -60,7 +59,7 @@ class NoteActivity : AppCompatActivity(){
         }
     }
     private fun subscribers() {
-        noteViewModel.allNotes.observe(this, { note->
+        noteViewModel.getNotes().observe(this, { note->
             if (note.isNullOrEmpty()){
                 binding.noNoteLayout.visible()
             } else
@@ -82,6 +81,7 @@ class NoteActivity : AppCompatActivity(){
     private fun setupRecyclerView() = binding.notesRecyclerView.apply {
         this.adapter = noteAdapter
         this.layoutManager = LinearLayoutManager(this@NoteActivity)
+        setHasFixedSize(true)
     }
     private fun initUi(){
         startActivity(Intent(this, AddNoteActivity::class.java))
@@ -93,40 +93,11 @@ class NoteActivity : AppCompatActivity(){
         startActivity(intent)
     }
     private fun searchNote(){
-        binding.searchNote.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (s != null) {
-                    val query = s.toString()
-                    val searchQuery = "%$query%"
-                    noteViewModel.searchNote(searchQuery).observe(this@NoteActivity, { list->
-                        list?.let {
-                            noteAdapter.submitList(it)
-                        }
-                    })
-                }
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-
-            }
-        })
-        /*binding.searchNote.doOnTextChanged { text, _, _, _ ->
+        binding.searchNote.doOnTextChanged { text, _, _, _ ->
             if (text != null) {
-                val query = text.toString()
-                if (query.isNotEmpty()) {
-                    val searchQuery = "%$query%"
-                    noteViewModel.searchNote(searchQuery).observe(this, { list->
-                        list?.let {
-                            noteAdapter.submitList(it)
-                        }
-                    })
-                }
+                noteViewModel.searchQuery.value = text.toString()
             }
-        }*/
+        }
     }
 
     private fun toggleNightMode() {

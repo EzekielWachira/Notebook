@@ -20,9 +20,8 @@ import kotlinx.coroutines.flow.Flow
 import tech.danielwaiguru.notebook.model.Note
 
 interface NoteRepository {
-    fun getAllNotes(): Flow<List<Note>>
     suspend fun insertNote(note: Note)
     suspend fun updateNote(note: Note)
     suspend fun deleteNote(note: Note)
-    fun searchNote(searchQuery: String): Flow<List<Note>>
+    fun getAllNotes(searchQuery: String): Flow<List<Note>>
 }

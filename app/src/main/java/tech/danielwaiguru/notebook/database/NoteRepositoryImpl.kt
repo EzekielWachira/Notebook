@@ -21,7 +21,6 @@ import tech.danielwaiguru.notebook.domain.NoteRepository
 import tech.danielwaiguru.notebook.model.Note
 
 class NoteRepositoryImpl(private val noteDao: NoteDao): NoteRepository{
-    override fun getAllNotes() = noteDao.getAllNotes()
     /**
      * insert a note
      */
@@ -35,7 +34,7 @@ class NoteRepositoryImpl(private val noteDao: NoteDao): NoteRepository{
         noteDao.deleteNote(note)
     }
 
-    override fun searchNote(searchQuery: String): Flow<List<Note>> {
-        return noteDao.searchNote(searchQuery)
+    override fun getAllNotes(searchQuery: String): Flow<List<Note>> {
+        return noteDao.getAllNotes(searchQuery)
     }
 }
