@@ -18,30 +18,28 @@ package tech.danielwaiguru.notebook.ui.add
 
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
-import junit.framework.TestCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
 import org.junit.Test
-import org.mockito.MockitoAnnotations
 import tech.danielwaiguru.notebook.base.BaseViewModelTest
-import tech.danielwaiguru.notebook.database.NoteRepository
+import tech.danielwaiguru.notebook.database.NoteRepositoryImpl
 import tech.danielwaiguru.notebook.model.Note
+import java.util.*
 
 class AddNoteViewModelTest : BaseViewModelTest() {
     private lateinit var addNoteViewModel: AddNoteViewModel
-    private val noteRepository: NoteRepository = mock()
+    private val noteRepository: NoteRepositoryImpl = mock()
 
     @Before
     fun setup() {
-        MockitoAnnotations.initMocks(this)
         addNoteViewModel = AddNoteViewModel(noteRepository)
     }
     @ExperimentalCoroutinesApi
     @Test
     fun `addNote calls repository to store a note`() = runBlockingTest {
         val dummyNote = Note(
-            1, "title", "desc", "20 Nov, 2020"
+            1, "title", "desc", Date().time
         )
         addNoteViewModel.saveNote(dummyNote)
         verify(noteRepository).insertNote(dummyNote)

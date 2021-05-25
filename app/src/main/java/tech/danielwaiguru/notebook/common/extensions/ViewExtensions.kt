@@ -17,6 +17,7 @@
 package tech.danielwaiguru.notebook.common.extensions
 
 import android.view.View
+import androidx.appcompat.widget.SearchView
 
 fun View.visible(){
     visibility = View.VISIBLE
@@ -24,4 +25,16 @@ fun View.visible(){
 
 fun View.gone(){
     visibility = View.GONE
+}
+inline fun SearchView.onQueryTextChanged(crossinline listener: (String) -> Unit) {
+    this.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        override fun onQueryTextSubmit(query: String?): Boolean {
+            return true
+        }
+
+        override fun onQueryTextChange(newText: String?): Boolean {
+            listener(newText.orEmpty())
+            return true
+        }
+    })
 }

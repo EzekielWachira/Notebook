@@ -18,7 +18,9 @@ package tech.danielwaiguru.notebook.ui.note
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -32,7 +34,7 @@ import tech.danielwaiguru.notebook.model.Note
 import tech.danielwaiguru.notebook.ui.add.AddNoteActivity
 import tech.danielwaiguru.notebook.ui.edit.ReadNoteActivity
 
-class NoteActivity : AppCompatActivity() {
+class NoteActivity : AppCompatActivity(){
     private lateinit var binding: ActivityNoteBinding
     private val noteViewModel by viewModel<NoteViewModel>()
     private val noteAdapter: NoteAdapter by lazy { NoteAdapter(this) {
@@ -44,27 +46,42 @@ class NoteActivity : AppCompatActivity() {
         binding = ActivityNoteBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupRecyclerView()
+        subscribers()
         initListeners()
         searchNote()
-        /**
-         * adding an observer to the live data
-         */
-        noteViewModel.allNotes.observe(this, { note->
+
+        Log.i("Note", "Creating")
+    }
+    private fun initListeners() {
+        with(binding) {
+            fabAddNote.setOnClickListener { initUi() }
+            toggleNight.setOnClickListener { toggleNightMode() }
+        }
+    }
+    private fun subscribers() {
+        noteViewModel.getNotes().observe(this, { note->
             if (note.isNullOrEmpty()){
                 binding.noNoteLayout.visible()
             } else
             {
                 binding.noNoteLayout.gone()
             }
-            noteAdapter.setData(note)
+            noteAdapter.submitList(note)
         })
-    }
-    private fun initListeners(){
-        binding.fabAddNote.setOnClickListener { initUi() }
+        noteViewModel.isNightMode.observe(this, { isNightMode ->
+            val defaultMode = if (isNightMode) {
+                AppCompatDelegate.MODE_NIGHT_YES
+            } else {
+                AppCompatDelegate.MODE_NIGHT_NO
+            }
+            setupThemeIcon(defaultMode)
+            AppCompatDelegate.setDefaultNightMode(defaultMode)
+        })
     }
     private fun setupRecyclerView() = binding.notesRecyclerView.apply {
         this.adapter = noteAdapter
         this.layoutManager = LinearLayoutManager(this@NoteActivity)
+        setHasFixedSize(true)
     }
     private fun initUi(){
         startActivity(Intent(this, AddNoteActivity::class.java))
@@ -77,7 +94,25 @@ class NoteActivity : AppCompatActivity() {
     }
     private fun searchNote(){
         binding.searchNote.doOnTextChanged { text, _, _, _ ->
-            noteAdapter.filter.filter(text.toString())
+            if (text != null) {
+                noteViewModel.searchQuery.value = text.toString()
+            }
         }
+    }
+
+    private fun toggleNightMode() {
+        noteViewModel.toggleNightMode()
+    }
+    private fun setupThemeIcon(mode: Int) {
+        if (mode == AppCompatDelegate.MODE_NIGHT_YES){
+            binding.toggleNight.setImageResource(R.drawable.ic_night_mode)
+        } else {
+            binding.toggleNight.setImageResource(R.drawable.ic_light_mode)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.searchNote.clearFocus()
     }
 }

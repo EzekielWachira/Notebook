@@ -17,17 +17,25 @@
 package tech.danielwaiguru.notebook.model
 
 import android.os.Parcelable
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
 import kotlinx.parcelize.Parcelize
+import tech.danielwaiguru.notebook.database.converters.Converters
+import java.util.*
 
 
 @Entity(tableName = "notes")
 @Parcelize
 data class Note (
     @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "note_id")
     val noteId: Int = 0,
+    @ColumnInfo(name = "note_title")
     var noteTitle: String,
+    @ColumnInfo(name = "note_text")
     var noteText: String,
-    var createdAt: String
+    @ColumnInfo(name = "created_at")
+    var createdAt: Long
 ): Parcelable

@@ -22,6 +22,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import tech.danielwaiguru.notebook.databinding.ActivityCreateNoteBinding
 import tech.danielwaiguru.notebook.model.Note
 import tech.danielwaiguru.notebook.utils.DateUtils
+import java.util.*
 
 class AddNoteActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCreateNoteBinding
@@ -53,7 +54,7 @@ class AddNoteActivity : AppCompatActivity() {
         }
         val noteTitle = binding.etNoteTitle.text.toString()
         val noteText = binding.etNoteText.text.toString()
-        val date = DateUtils.formatDate()
+        val date = Date(System.currentTimeMillis()).time
         val note = Note(noteTitle = noteTitle, noteText = noteText, createdAt = date)
         addNoteViewModel.saveNote(note)
     }

@@ -18,28 +18,25 @@ package tech.danielwaiguru.notebook.ui.edit
 
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
-import junit.framework.TestCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
 import org.junit.Test
-import org.mockito.MockitoAnnotations
-
 import tech.danielwaiguru.notebook.base.BaseViewModelTest
-import tech.danielwaiguru.notebook.database.NoteRepository
+import tech.danielwaiguru.notebook.database.NoteRepositoryImpl
 import tech.danielwaiguru.notebook.model.Note
+import java.util.*
 
 @ExperimentalCoroutinesApi
 class ReadNoteViewModelTest : BaseViewModelTest() {
     private lateinit var readNoteViewModel: ReadNoteViewModel
-    private val noteRepository: NoteRepository = mock()
+    private val noteRepository: NoteRepositoryImpl = mock()
     private val dummyNote = Note(
-        1, "title", "desc", "20 Nov, 2020"
+        1, "title", "desc", Date().time
     )
 
     @Before
     fun setup() {
-        MockitoAnnotations.initMocks(this)
         readNoteViewModel = ReadNoteViewModel(noteRepository)
     }
     @Test

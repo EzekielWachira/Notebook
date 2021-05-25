@@ -17,7 +17,7 @@
 <resources>
     <string name="app_name">Notebook</string>
     <string name="_8942">⋮</string>
-    <string name="search_notes">Search Notes</string>
+    <string name="search_notes">Search a note</string>
     <string name="my_notes">My Notes</string>
     <string name="note_hint">My Note</string>
     <string name="title_hint">My Note Title</string>
@@ -28,4 +28,6 @@
     <string name="delete">Delete</string>
     <string name="no_notes">No Note Available, Add Some</string>
     <string name="fab_description">Add a new note</string>
+    <string name="save">Save</string>
+    <string name="toggle_light_and_night_mode">Toggle light and night mode</string>
 </resources>

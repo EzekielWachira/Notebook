@@ -21,4 +21,6 @@ object Constants {
     const val NOTE_EXTRA = "note_id"
     const val NOTE_WITH_TITLE = 0
     const val NOTE_WITHOUT_TITLE = 1
+    const val STORE_NAME = "notebook"
+    const val DARK_MODE_ENABLED = "is_dark_mode"
 }

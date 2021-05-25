@@ -25,5 +25,5 @@ import tech.danielwaiguru.notebook.ui.note.NoteViewModel
 val viewModelModule = module {
     viewModel { AddNoteViewModel(get()) }
     viewModel { ReadNoteViewModel(get()) }
-    viewModel { NoteViewModel(get()) }
+    viewModel { NoteViewModel(get(), get()) }
 }

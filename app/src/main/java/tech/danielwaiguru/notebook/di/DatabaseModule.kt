@@ -21,11 +21,13 @@ import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
 import tech.danielwaiguru.notebook.common.Constants.DB_NAME
 import tech.danielwaiguru.notebook.database.NoteDatabase
+import tech.danielwaiguru.notebook.database.migrations.MigrationV2
+import tech.danielwaiguru.notebook.database.migrations.MigrationV3
 
 val databaseModule = module {
     single {
         Room.databaseBuilder(androidApplication(), NoteDatabase::class.java, DB_NAME)
-            .fallbackToDestructiveMigration()
+            .addMigrations(MigrationV2(), MigrationV3())
             .build()
     }
     single { get<NoteDatabase>().noteDao() }

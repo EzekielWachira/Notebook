@@ -14,22 +14,11 @@
  *    limitations under the License.
  */
 
-package tech.danielwaiguru.notebook.database
+package tech.danielwaiguru.notebook.prefs_store
 
-import tech.danielwaiguru.notebook.model.Note
+import kotlinx.coroutines.flow.Flow
 
-class NoteRepository(private val noteDao: NoteDao){
-    fun getAllNotes() = noteDao.getAllNotes()
-    /**
-     * insert a note
-     */
-    suspend fun insertNote(note: Note){
-        noteDao.insertNote(note)
-    }
-    suspend fun updateNote(note: Note){
-        noteDao.updateNote(note)
-    }
-    suspend fun deleteNote(note: Note){
-        noteDao.deleteNote(note)
-    }
+interface PrefsStore {
+    fun isNightMode(): Flow<Boolean>
+    suspend fun toggleNightMode()
 }
