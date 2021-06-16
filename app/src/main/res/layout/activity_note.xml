@@ -15,14 +15,13 @@
   ~    limitations under the License.
   -->
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.note.NoteActivity"
-    >
+    app:layoutDescription="@xml/activity_note_scene"
+    tools:context=".ui.note.NoteActivity">
 
     <TextView
         android:id="@+id/titleTextView"
@@ -32,131 +31,137 @@
         android:layout_marginTop="30dp"
         android:fontFamily="@font/lobster_two"
         android:text="@string/my_notes"
-        android:textStyle="bold"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <ImageButton
         android:id="@+id/toggleNight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:layout_marginEnd="@dimen/_13sdp"
+        android:background="@drawable/circle_button"
+        android:contentDescription="@string/toggle_light_and_night_mode"
         android:elevation="@dimen/_8sdp"
         android:padding="@dimen/_5sdp"
-        android:background="@drawable/circle_button"
-        android:layout_marginEnd="@dimen/_13sdp"
-        android:layout_marginTop="@dimen/_25sdp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/toggle_light_and_night_mode"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAddNote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_create"
-        app:tint="@color/textColor"
-        app:fabSize="mini"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_margin="@dimen/_18sdp"
-        android:contentDescription="@string/fab_description" />
-    <com.google.android.material.card.MaterialCardView
+        android:contentDescription="@string/fab_description"
+        android:src="@drawable/ic_create"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/textColor" />
+
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_13sdp"
+        android:layout_marginTop="@dimen/_13sdp"
+        android:layout_marginEnd="@dimen/_13sdp"
+        android:paddingStart="@dimen/_8sdp"
+        android:paddingEnd="@dimen/_5sdp"
         app:cardCornerRadius="@dimen/_8sdp"
         app:cardElevation="@dimen/_4sdp"
-        android:layout_marginStart="@dimen/_13sdp"
-        android:paddingStart="@dimen/_8sdp"
-        android:layout_marginTop="@dimen/_13sdp"
-        android:paddingEnd="@dimen/_5sdp"
-        android:layout_marginEnd="@dimen/_13sdp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/titleTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        app:layout_constraintTop_toBottomOf="@id/titleTextView">
+
         <LinearLayout
             android:id="@+id/search_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:gravity="center_vertical"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:gravity="center_vertical"
-            android:focusableInTouchMode="true"
             app:layout_constraintTop_toBottomOf="@id/titleTextView"
 
             >
+
             <ImageView
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
-                android:src="@drawable/ic_search"
                 android:layout_marginStart="@dimen/_8sdp"
                 android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_search"
                 app:tint="@color/colorAccent" />
+
             <EditText
                 android:id="@+id/searchNote"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_35sdp"
-                android:hint="@string/search_notes"
                 android:layout_marginStart="@dimen/_7sdp"
                 android:background="@null"
+                android:hint="@string/search_notes"
                 android:imeOptions="actionDone"
                 android:importantForAutofill="no"
                 android:includeFontPadding="false"
                 android:inputType="text"
-                android:textSize="@dimen/_16ssp"
                 android:textColorHint="@color/colorHint"
-                />
+                android:textSize="@dimen/_16ssp" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/notesRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card"
-        android:layout_marginTop="@dimen/_13sdp"
         android:layout_marginStart="@dimen/_13sdp"
+        android:layout_marginTop="@dimen/_13sdp"
         android:layout_marginEnd="@dimen/_13sdp"
         android:clipToPadding="false"
         android:paddingBottom="@dimen/_5sdp"
-        />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card" />
+
     <TextView
         android:id="@+id/noNotes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
         android:text="@string/no_notes"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
         android:id="@+id/noNoteLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:gravity="center"
+        android:orientation="vertical"
         android:visibility="gone"
-        tools:visibility="visible"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="UseCompoundDrawables">
+        tools:ignore="UseCompoundDrawables"
+        tools:visibility="visible">
+
         <ImageView
             android:layout_width="@dimen/_150sdp"
             android:layout_height="@dimen/_200sdp"
-            android:src="@drawable/ic_undraw_no_note"
-            android:contentDescription="@string/app_name" />
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_undraw_no_note" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:visibility="visible"
             android:text="@string/no_notes"
-            />
+            tools:visibility="visible" />
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.motion.widget.MotionLayout>
