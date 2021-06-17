@@ -22,7 +22,7 @@
     <Transition
         motion:constraintSetEnd="@+id/end"
         motion:constraintSetStart="@id/start"
-        motion:duration="2000"
+        motion:duration="1000"
         motion:autoTransition="animateToEnd"
         >
        <KeyFrameSet>
@@ -38,7 +38,9 @@
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintTop_toBottomOf="@id/appBar"
             motion:layout_constraintStart_toStartOf="parent"
-            android:alpha="0" />
+            android:alpha="0"
+            android:scaleX=".5"
+            android:scaleY=".5" />
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
@@ -50,7 +52,6 @@
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintTop_toBottomOf="@id/appBar"
             motion:layout_constraintStart_toStartOf="parent"
-            android:translationY="@dimen/_10sdp"
             android:alpha="1" />
     </ConstraintSet>
 </MotionScene>
