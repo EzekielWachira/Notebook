@@ -30,29 +30,6 @@
 
     <ConstraintSet android:id="@+id/start">
         <Constraint
-            android:id="@+id/titleTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_13sdp"
-            motion:layout_constraintTop_toTopOf="parent"
-            motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="30dp"
-            android:alpha="0"
-            android:scaleX=".5"
-            android:scaleY=".5" />
-        <Constraint
-            android:id="@+id/toggleNight"
-            android:elevation="@dimen/_8sdp"
-            motion:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_13sdp"
-            motion:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="@dimen/_25sdp"
-            android:alpha="0"
-            android:scaleX=".5"
-            android:scaleY=".5" />
-        <Constraint
             android:id="@+id/card"
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="match_parent"
@@ -62,8 +39,8 @@
             motion:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="@dimen/_13sdp"
             motion:layout_constraintTop_toBottomOf="@id/titleTextView"
-            android:scaleX=".5"
-            android:scaleY=".5"
+            android:scaleX=".4"
+            android:scaleY=".4"
             android:alpha="0" />
         <Constraint
             android:id="@+id/fabAddNote"
@@ -71,9 +48,37 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             motion:layout_constraintBottom_toBottomOf="parent"
+            android:scaleX=".4"
+            android:scaleY=".4"
+            android:alpha="0" />
+        <Constraint
+            android:id="@+id/titleTextView"
+            motion:layout_constraintEnd_toStartOf="@id/toggleNight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_13sdp"
+            android:layout_marginStart="@dimen/_13sdp"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="30dp"
             android:alpha="0"
-            android:scaleX=".5"
-            android:scaleY=".5" />
+            android:scaleX=".4"
+            android:scaleY=".4" />
+        <Constraint
+            android:id="@+id/toggleNight"
+            android:elevation="@dimen/_8sdp"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toEndOf="@id/titleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="@id/titleTextView"
+            android:layout_marginEnd="@dimen/_13sdp"
+            android:layout_marginStart="@dimen/_13sdp"
+            motion:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:alpha="0"
+            android:scaleX=".4"
+            android:scaleY=".4" />
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
