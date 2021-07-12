@@ -18,6 +18,7 @@ package tech.danielwaiguru.notebook.common.extensions
 
 import android.view.View
 import androidx.appcompat.widget.SearchView
+import androidx.constraintlayout.motion.widget.MotionLayout
 
 fun View.visible(){
     visibility = View.VISIBLE
@@ -37,4 +38,12 @@ inline fun SearchView.onQueryTextChanged(crossinline listener: (String) -> Unit)
             return true
         }
     })
+}
+fun View.toggleVisibility(visibility: Int) {
+    val motionLayout = parent as MotionLayout
+    motionLayout.constraintSetIds.forEach {
+        val constraintSet = motionLayout.getConstraintSet(it) ?: return@forEach
+        constraintSet.setVisibility(this.id, visibility)
+        constraintSet.applyTo(motionLayout)
+    }
 }

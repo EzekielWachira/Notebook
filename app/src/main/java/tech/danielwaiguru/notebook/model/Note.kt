@@ -20,10 +20,7 @@ import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import androidx.room.TypeConverters
 import kotlinx.parcelize.Parcelize
-import tech.danielwaiguru.notebook.database.converters.Converters
-import java.util.*
 
 
 @Entity(tableName = "notes")

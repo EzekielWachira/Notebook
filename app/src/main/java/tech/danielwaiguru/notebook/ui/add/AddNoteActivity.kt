@@ -21,7 +21,6 @@ import androidx.appcompat.app.AppCompatActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import tech.danielwaiguru.notebook.databinding.ActivityCreateNoteBinding
 import tech.danielwaiguru.notebook.model.Note
-import tech.danielwaiguru.notebook.utils.DateUtils
 import java.util.*
 
 class AddNoteActivity : AppCompatActivity() {

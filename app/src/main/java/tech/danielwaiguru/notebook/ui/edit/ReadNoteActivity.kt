@@ -25,9 +25,8 @@ import androidx.core.content.ContextCompat
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import tech.danielwaiguru.notebook.R
 import tech.danielwaiguru.notebook.common.Constants.NOTE_EXTRA
-import tech.danielwaiguru.notebook.model.Note
 import tech.danielwaiguru.notebook.databinding.ActivityReadNoteBinding
-import tech.danielwaiguru.notebook.utils.DateUtils
+import tech.danielwaiguru.notebook.model.Note
 import java.util.*
 
 class ReadNoteActivity : AppCompatActivity() {
@@ -63,9 +62,13 @@ class ReadNoteActivity : AppCompatActivity() {
         val id = note.noteId
         val title = binding.titleRead.text.toString()
         val text= binding.textRead.text.toString()
-        val date = Date(System.currentTimeMillis()).time
-        val note = Note(noteId = id, noteTitle = title, noteText = text, createdAt = date)
-        readNoteViewModel.updateNote(note)
+        if (note.noteTitle != title || note.noteText != text) {
+            val date = Date(System.currentTimeMillis()).time
+            val note = Note(noteId = id, noteTitle = title, noteText = text, createdAt = date)
+            readNoteViewModel.updateNote(note)
+        } else {
+            return
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
