@@ -60,13 +60,16 @@ class NoteActivity : AppCompatActivity(){
     }
     private fun subscribers() {
         noteViewModel.getNotes().observe(this, { note->
-            if (note.isNullOrEmpty()){
-                binding.noNoteLayout.visible()
-            } else
-            {
-                binding.noNoteLayout.gone()
+            with(binding) {
+                if (note.isNullOrEmpty()){
+                    imageView.visible()
+                    noNotesText.visible()
+                } else {
+                    imageView.gone()
+                    noNotesText.gone()
+                }
+                noteAdapter.submitList(note)
             }
-            noteAdapter.submitList(note)
         })
         noteViewModel.isNightMode.observe(this, { isNightMode ->
             val defaultMode = if (isNightMode) {
