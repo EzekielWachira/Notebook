@@ -20,17 +20,13 @@ import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.github.testcoroutinesrule.TestCoroutineRule
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
-import org.junit.runner.RunWith
-import org.robolectric.RobolectricTestRunner
 import tech.danielwaiguru.notebook.database.NoteDao
 import tech.danielwaiguru.notebook.database.NoteDatabase
-import tech.danielwaiguru.notebook.utils.KoinTestRule
 
 abstract class BaseTest: BaseKoinTest() {
     @get: Rule

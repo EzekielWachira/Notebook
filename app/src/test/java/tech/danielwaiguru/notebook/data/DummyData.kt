@@ -16,18 +16,6 @@
 
 package tech.danielwaiguru.notebook.data
 
-import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.google.common.truth.Truth
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.test.TestCoroutineDispatcher
-import kotlinx.coroutines.test.TestCoroutineScope
-import org.junit.Test
-import org.junit.runner.RunWith
-import tech.danielwaiguru.notebook.base.BaseTest
-import tech.danielwaiguru.notebook.database.NoteRepositoryImpl
-import tech.danielwaiguru.notebook.domain.NoteRepository
 import tech.danielwaiguru.notebook.model.Note
 import java.util.*
 
