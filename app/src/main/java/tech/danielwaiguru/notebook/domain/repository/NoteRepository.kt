@@ -14,10 +14,14 @@
  *    limitations under the License.
  */
 
-package tech.danielwaiguru.notebook.data
+package tech.danielwaiguru.notebook.domain.repository
 
+import kotlinx.coroutines.flow.Flow
 import tech.danielwaiguru.notebook.domain.model.Note
-import java.util.*
 
-val dummyNote = Note(1, "Test title", "Note title", Date().time)
-val updateDummyNote = Note(1, "Test Updated", "Note updated", Date().time)
+interface NoteRepository {
+    suspend fun insertNote(note: Note)
+    suspend fun updateNote(note: Note)
+    suspend fun deleteNote(note: Note)
+    fun getAllNotes(searchQuery: String): Flow<List<Note>>
+}

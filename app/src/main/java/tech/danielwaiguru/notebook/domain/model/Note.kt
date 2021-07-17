@@ -14,10 +14,25 @@
  *    limitations under the License.
  */
 
-package tech.danielwaiguru.notebook.data
+package tech.danielwaiguru.notebook.domain.model
 
-import tech.danielwaiguru.notebook.domain.model.Note
-import java.util.*
+import android.os.Parcelable
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import kotlinx.parcelize.Parcelize
 
-val dummyNote = Note(1, "Test title", "Note title", Date().time)
-val updateDummyNote = Note(1, "Test Updated", "Note updated", Date().time)
+
+@Entity(tableName = "notes")
+@Parcelize
+data class Note (
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "note_id")
+    val noteId: Int = 0,
+    @ColumnInfo(name = "note_title")
+    var noteTitle: String,
+    @ColumnInfo(name = "note_text")
+    var noteText: String,
+    @ColumnInfo(name = "created_at")
+    var createdAt: Long
+): Parcelable

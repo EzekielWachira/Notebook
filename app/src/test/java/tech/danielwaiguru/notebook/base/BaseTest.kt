@@ -25,8 +25,8 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
-import tech.danielwaiguru.notebook.database.NoteDao
-import tech.danielwaiguru.notebook.database.NoteDatabase
+import tech.danielwaiguru.notebook.data.database.NoteDao
+import tech.danielwaiguru.notebook.data.database.NoteDatabase
 
 abstract class BaseTest: BaseKoinTest() {
     @get: Rule

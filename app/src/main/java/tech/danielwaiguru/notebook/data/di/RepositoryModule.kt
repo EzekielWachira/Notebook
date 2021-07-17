@@ -14,10 +14,12 @@
  *    limitations under the License.
  */
 
-package tech.danielwaiguru.notebook.data
+package tech.danielwaiguru.notebook.data.di
 
-import tech.danielwaiguru.notebook.domain.model.Note
-import java.util.*
+import org.koin.dsl.module
+import tech.danielwaiguru.notebook.data.repository.NoteRepositoryImpl
+import tech.danielwaiguru.notebook.domain.repository.NoteRepository
 
-val dummyNote = Note(1, "Test title", "Note title", Date().time)
-val updateDummyNote = Note(1, "Test Updated", "Note updated", Date().time)
+val repositoryModule = module {
+    single <NoteRepository>{ NoteRepositoryImpl(get()) }
+}

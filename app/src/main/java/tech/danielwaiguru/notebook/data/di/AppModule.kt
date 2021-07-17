@@ -14,10 +14,13 @@
  *    limitations under the License.
  */
 
-package tech.danielwaiguru.notebook.data
+package tech.danielwaiguru.notebook.data.di
 
-import tech.danielwaiguru.notebook.domain.model.Note
-import java.util.*
+import org.koin.android.ext.koin.androidContext
+import org.koin.dsl.module
+import tech.danielwaiguru.notebook.data.prefs_store.PrefsStoreImpl
+import tech.danielwaiguru.notebook.domain.prefs_store.PrefsStore
 
-val dummyNote = Note(1, "Test title", "Note title", Date().time)
-val updateDummyNote = Note(1, "Test Updated", "Note updated", Date().time)
+val appModule = module {
+    single<PrefsStore> { PrefsStoreImpl(androidContext()) }
+}

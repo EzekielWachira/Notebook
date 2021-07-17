@@ -14,10 +14,18 @@
  *    limitations under the License.
  */
 
-package tech.danielwaiguru.notebook.data
+package tech.danielwaiguru.notebook.data.database.converters
 
-import tech.danielwaiguru.notebook.domain.model.Note
+import androidx.room.TypeConverter
 import java.util.*
 
-val dummyNote = Note(1, "Test title", "Note title", Date().time)
-val updateDummyNote = Note(1, "Test Updated", "Note updated", Date().time)
+class Converters {
+    @TypeConverter
+    fun fromTimestamp(timeInMillis: Long): Date {
+        return Date(timeInMillis)
+    }
+    @TypeConverter
+    fun dateToMillis(date: Date): Long {
+        return date.time
+    }
+}

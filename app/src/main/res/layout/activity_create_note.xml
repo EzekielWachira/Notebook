@@ -21,7 +21,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layoutDescription="@xml/activity_create_note_scene"
-    tools:context=".ui.add.AddNoteActivity">
+    tools:context="tech.danielwaiguru.notebook.presentation.views.add.AddNoteActivity">
 
     <ImageView
         android:id="@+id/imageViewCancel"

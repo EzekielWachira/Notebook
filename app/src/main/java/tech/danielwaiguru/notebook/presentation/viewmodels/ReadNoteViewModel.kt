@@ -14,10 +14,19 @@
  *    limitations under the License.
  */
 
-package tech.danielwaiguru.notebook.data
+package tech.danielwaiguru.notebook.presentation.viewmodels
 
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
 import tech.danielwaiguru.notebook.domain.model.Note
-import java.util.*
+import tech.danielwaiguru.notebook.domain.repository.NoteRepository
 
-val dummyNote = Note(1, "Test title", "Note title", Date().time)
-val updateDummyNote = Note(1, "Test Updated", "Note updated", Date().time)
+class ReadNoteViewModel(private val noteRepository: NoteRepository): ViewModel() {
+    fun updateNote(note: Note) = viewModelScope.launch {
+        noteRepository.updateNote(note)
+    }
+    fun deleteNote(note: Note) = viewModelScope.launch {
+        noteRepository.deleteNote(note)
+    }
+}

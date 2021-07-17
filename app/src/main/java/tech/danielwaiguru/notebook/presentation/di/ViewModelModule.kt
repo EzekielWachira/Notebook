@@ -14,10 +14,16 @@
  *    limitations under the License.
  */
 
-package tech.danielwaiguru.notebook.data
+package tech.danielwaiguru.notebook.presentation.di
 
-import tech.danielwaiguru.notebook.domain.model.Note
-import java.util.*
+import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.dsl.module
+import tech.danielwaiguru.notebook.presentation.viewmodels.AddNoteViewModel
+import tech.danielwaiguru.notebook.presentation.viewmodels.NoteViewModel
+import tech.danielwaiguru.notebook.presentation.viewmodels.ReadNoteViewModel
 
-val dummyNote = Note(1, "Test title", "Note title", Date().time)
-val updateDummyNote = Note(1, "Test Updated", "Note updated", Date().time)
+val viewModelModule = module {
+    viewModel { AddNoteViewModel(get()) }
+    viewModel { ReadNoteViewModel(get()) }
+    viewModel { NoteViewModel(get(), get()) }
+}

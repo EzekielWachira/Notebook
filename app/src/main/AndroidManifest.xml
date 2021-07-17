@@ -26,10 +26,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.edit.ReadNoteActivity"
+        <activity android:name="tech.danielwaiguru.notebook.presentation.views.edit.ReadNoteActivity"
             android:label="Read Note"/>
-        <activity android:name=".ui.add.AddNoteActivity" />
-        <activity android:name=".ui.note.NoteActivity"
+        <activity android:name="tech.danielwaiguru.notebook.presentation.views.add.AddNoteActivity" />
+        <activity android:name="tech.danielwaiguru.notebook.presentation.views.note.NoteActivity"
             android:theme="@style/AppTheme.SplashScreen"
             >
             <intent-filter>

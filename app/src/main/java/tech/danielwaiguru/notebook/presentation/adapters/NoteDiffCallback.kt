@@ -14,10 +14,17 @@
  *    limitations under the License.
  */
 
-package tech.danielwaiguru.notebook.data
+package tech.danielwaiguru.notebook.presentation.adapters
 
+import androidx.recyclerview.widget.DiffUtil
 import tech.danielwaiguru.notebook.domain.model.Note
-import java.util.*
 
-val dummyNote = Note(1, "Test title", "Note title", Date().time)
-val updateDummyNote = Note(1, "Test Updated", "Note updated", Date().time)
+object NoteDiffCallback: DiffUtil.ItemCallback<Note>() {
+    override fun areItemsTheSame(oldItem: Note, newItem: Note): Boolean {
+        return oldItem.noteId == newItem.noteId
+    }
+
+    override fun areContentsTheSame(oldItem: Note, newItem: Note): Boolean {
+        return oldItem == newItem
+    }
+}

@@ -20,10 +20,10 @@ import android.app.Application
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.logger.AndroidLogger
 import org.koin.core.context.startKoin
-import tech.danielwaiguru.notebook.di.appModule
-import tech.danielwaiguru.notebook.di.databaseModule
-import tech.danielwaiguru.notebook.di.repositoryModule
-import tech.danielwaiguru.notebook.di.viewModelModule
+import tech.danielwaiguru.notebook.data.di.appModule
+import tech.danielwaiguru.notebook.data.di.databaseModule
+import tech.danielwaiguru.notebook.data.di.repositoryModule
+import tech.danielwaiguru.notebook.presentation.di.viewModelModule
 
 class NoteApp: Application() {
     override fun onCreate() {

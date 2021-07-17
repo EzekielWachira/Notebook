@@ -21,10 +21,10 @@ import org.junit.runner.Description
 import org.junit.runners.model.Statement
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
-import tech.danielwaiguru.notebook.di.appModule
-import tech.danielwaiguru.notebook.di.databaseModule
-import tech.danielwaiguru.notebook.di.repositoryModule
-import tech.danielwaiguru.notebook.di.viewModelModule
+import tech.danielwaiguru.notebook.data.di.appModule
+import tech.danielwaiguru.notebook.data.di.databaseModule
+import tech.danielwaiguru.notebook.data.di.repositoryModule
+import tech.danielwaiguru.notebook.presentation.di.viewModelModule
 
 class KoinTestRule: TestRule {
     override fun apply(base: Statement?, description: Description?): Statement {

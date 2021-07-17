@@ -22,7 +22,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     app:layoutDescription="@xml/activity_note_scene"
-    tools:context=".ui.note.NoteActivity">
+    tools:context="tech.danielwaiguru.notebook.presentation.views.note.NoteActivity">
 
     <TextView
         android:id="@+id/titleTextView"

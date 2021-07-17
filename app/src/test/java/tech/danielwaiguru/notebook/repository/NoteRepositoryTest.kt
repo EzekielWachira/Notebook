@@ -27,8 +27,8 @@ import org.junit.runner.RunWith
 import tech.danielwaiguru.notebook.base.BaseTest
 import tech.danielwaiguru.notebook.data.dummyNote
 import tech.danielwaiguru.notebook.data.updateDummyNote
-import tech.danielwaiguru.notebook.database.NoteRepositoryImpl
-import tech.danielwaiguru.notebook.domain.NoteRepository
+import tech.danielwaiguru.notebook.data.repository.NoteRepositoryImpl
+import tech.danielwaiguru.notebook.domain.repository.NoteRepository
 import tech.danielwaiguru.notebook.utils.getOrAwaitValue
 
 @ExperimentalCoroutinesApi

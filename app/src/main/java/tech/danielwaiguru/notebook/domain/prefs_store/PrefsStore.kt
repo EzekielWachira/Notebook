@@ -14,10 +14,11 @@
  *    limitations under the License.
  */
 
-package tech.danielwaiguru.notebook.data
+package tech.danielwaiguru.notebook.domain.prefs_store
 
-import tech.danielwaiguru.notebook.domain.model.Note
-import java.util.*
+import kotlinx.coroutines.flow.Flow
 
-val dummyNote = Note(1, "Test title", "Note title", Date().time)
-val updateDummyNote = Note(1, "Test Updated", "Note updated", Date().time)
+interface PrefsStore {
+    fun isNightMode(): Flow<Boolean>
+    suspend fun toggleNightMode()
+}
