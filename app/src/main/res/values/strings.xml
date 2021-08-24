@@ -30,4 +30,5 @@
     <string name="fab_description">Add a new note</string>
     <string name="save">Save</string>
     <string name="toggle_light_and_night_mode">Toggle light and night mode</string>
+    <string name="title_vault">Vault</string>
 </resources>
