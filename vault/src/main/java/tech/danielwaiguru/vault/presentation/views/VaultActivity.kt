@@ -14,14 +14,17 @@
  *    limitations under the License.
  */
 
-package tech.danielwaiguru.notebook.common
+package tech.danielwaiguru.vault.presentation.views
 
-object Constants {
-    const val DB_NAME = "notes_database"
-    const val NOTE_EXTRA = "note_id"
-    const val NOTE_WITH_TITLE = 0
-    const val NOTE_WITHOUT_TITLE = 1
-    const val STORE_NAME = "notebook"
-    const val DARK_MODE_ENABLED = "is_dark_mode"
-    const val VAULT_DYNAMIC_MODULE_NAME = "vault"
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import tech.danielwaiguru.vault.databinding.ActivityVaultBinding
+
+class VaultActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityVaultBinding
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityVaultBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+    }
 }

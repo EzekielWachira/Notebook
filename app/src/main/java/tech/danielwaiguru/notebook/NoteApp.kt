@@ -16,7 +16,7 @@
 
 package tech.danielwaiguru.notebook
 
-import android.app.Application
+import com.google.android.play.core.splitcompat.SplitCompatApplication
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.logger.AndroidLogger
 import org.koin.core.context.startKoin
@@ -25,7 +25,7 @@ import tech.danielwaiguru.notebook.data.di.databaseModule
 import tech.danielwaiguru.notebook.data.di.repositoryModule
 import tech.danielwaiguru.notebook.presentation.di.viewModelModule
 
-class NoteApp: Application() {
+class NoteApp: SplitCompatApplication() {
     override fun onCreate() {
         super.onCreate()
         initKoin()
