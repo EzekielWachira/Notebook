@@ -1,0 +1,4 @@
+-keep class tech.danielwaiguru.vault.presentation.views.AuthActivity { <init>(); }
+-keep class tech.danielwaiguru.vault.presentation.views.VaultActivity { <init>(); }
+-keep class androidx.constraintlayout.widget.ConstraintLayout { <init>(android.content.Context, android.util.AttributeSet); }
+

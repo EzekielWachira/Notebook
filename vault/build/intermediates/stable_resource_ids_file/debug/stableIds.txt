@@ -1,0 +1,5 @@
+tech.danielwaiguru.notebook:string/vault_title = 0x7e040000
+tech.danielwaiguru.notebook:layout/activity_auth = 0x7e030000
+tech.danielwaiguru.notebook:drawable/fingerprint = 0x7e020000
+tech.danielwaiguru.notebook:layout/activity_vault = 0x7e030001
+tech.danielwaiguru.notebook:dimen/title_size = 0x7e010000

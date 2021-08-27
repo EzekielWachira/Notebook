@@ -35,7 +35,7 @@ abstract class BaseTest: BaseKoinTest() {
     @ExperimentalCoroutinesApi
     @get:Rule
     val testCoroutineRule = TestCoroutineRule()
-    protected lateinit var noteDao: NoteDao
+    lateinit var noteDao: NoteDao
     private lateinit var db: NoteDatabase
     @Before
     open fun setup() {

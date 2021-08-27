@@ -21,3 +21,8 @@ import java.util.*
 
 val dummyNote = Note(1, "Test title", "Note title", Date().time)
 val updateDummyNote = Note(1, "Test Updated", "Note updated", Date().time)
+val dummyList = listOf(
+    Note(0, "Tile", "Note title", Date().time),
+    Note(1, "Test title 1", "Note title 2", Date().time),
+    Note(2, "Test title 2", "Note title 2", Date().time)
+)

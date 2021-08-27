@@ -1,0 +1,6 @@
+tech/danielwaiguru/vault/databinding/ActivityAuthBinding.java
+ tech.danielwaiguru.vault.databinding.ActivityAuthBinding
+tech/danielwaiguru/vault/BuildConfig.java
+ tech.danielwaiguru.vault.BuildConfig
+tech/danielwaiguru/vault/databinding/ActivityVaultBinding.java
+ tech.danielwaiguru.vault.databinding.ActivityVaultBinding

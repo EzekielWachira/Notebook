@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "D:\\AndroidStudioProjects\\Notebook\\vault\\build\\intermediates\\merged_res\\debug\\layout_activity_auth.xml.flat",
+        "source": "D:\\AndroidStudioProjects\\Notebook\\vault\\src\\main\\res\\layout\\activity_auth.xml"
+    },
+    {
+        "merged": "D:\\AndroidStudioProjects\\Notebook\\vault\\build\\intermediates\\merged_res\\debug\\drawable_fingerprint.png.flat",
+        "source": "D:\\AndroidStudioProjects\\Notebook\\vault\\src\\main\\res\\drawable\\fingerprint.png"
+    },
+    {
+        "merged": "D:\\AndroidStudioProjects\\Notebook\\vault\\build\\intermediates\\merged_res\\debug\\layout_activity_vault.xml.flat",
+        "source": "D:\\AndroidStudioProjects\\Notebook\\vault\\src\\main\\res\\layout\\activity_vault.xml"
+    }
+]

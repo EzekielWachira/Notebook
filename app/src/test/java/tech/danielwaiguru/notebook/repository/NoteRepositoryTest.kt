@@ -18,18 +18,18 @@ package tech.danielwaiguru.notebook.repository
 
 import androidx.lifecycle.asLiveData
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.google.common.truth.Truth
+import com.jraska.livedata.test
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.TestCoroutineScope
 import org.junit.Test
 import org.junit.runner.RunWith
 import tech.danielwaiguru.notebook.base.BaseTest
 import tech.danielwaiguru.notebook.data.dummyNote
-import tech.danielwaiguru.notebook.data.updateDummyNote
 import tech.danielwaiguru.notebook.data.repository.NoteRepositoryImpl
+import tech.danielwaiguru.notebook.data.updateDummyNote
 import tech.danielwaiguru.notebook.domain.repository.NoteRepository
-import tech.danielwaiguru.notebook.utils.getOrAwaitValue
 
 @ExperimentalCoroutinesApi
 @RunWith(AndroidJUnit4::class)
@@ -43,26 +43,35 @@ class NoteRepositoryTest : BaseTest() {
     }
     @Test
     fun `adding a note actually stores the note`() {
-        testCoroutineRule.runBlockingTest {
+        runBlocking {
             noteRepo.insertNote(dummyNote)
-            val data = noteRepo.getAllNotes("").asLiveData().getOrAwaitValue()
-            Truth.assertThat(data).contains(dummyNote)
+            val data = noteRepo.getAllNotes("").asLiveData()
+            data.test().assertValue {
+                it.contains(dummyNote)
+            }
+
         }
     }
     @Test
     fun `delete a note removes it from the db`() {
-        testCoroutineRule.runBlockingTest {
+        runBlocking {
             noteRepo.insertNote(dummyNote)
             noteRepo.deleteNote(dummyNote)
-            val data = noteRepo.getAllNotes("").asLiveData().getOrAwaitValue()
-            Truth.assertThat(data.size).isEqualTo(0)
+            val data = noteRepo.getAllNotes("").asLiveData()
+            data.test().assertValue {
+                it.isEmpty()
+            }
         }
     }
     @Test
-    fun `update a note`() = testCoroutineRule.runBlockingTest {
-        noteRepo.insertNote(dummyNote)
-        noteRepo.updateNote(updateDummyNote)
-        val data = noteRepo.getAllNotes("").asLiveData().getOrAwaitValue()
-        Truth.assertThat(data[0].noteTitle).isEqualTo("Test Updated")
+    fun `update a note`() {
+        runBlocking {
+            noteRepo.insertNote(dummyNote)
+            noteRepo.updateNote(updateDummyNote)
+            val data = noteRepo.getAllNotes("").asLiveData()
+            data.test().assertValue {
+                it[0].noteTitle == "Test Updated"
+            }
+        }
     }
 }

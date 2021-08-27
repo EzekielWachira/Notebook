@@ -1,0 +1,49 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    xmlns:dist="http://schemas.android.com/apk/distribution"
+4    featureSplit="vault"
+5    package="tech.danielwaiguru.notebook"
+6    android:versionCode="8"
+7    android:versionName="1.1.2" >
+8
+9    <uses-sdk android:minSdkVersion="21" />
+9-->D:\AndroidStudioProjects\Notebook\vault\src\main\AndroidManifest.xml
+10
+11    <dist:module
+11-->D:\AndroidStudioProjects\Notebook\vault\src\main\AndroidManifest.xml:6:5-14:19
+12        dist:instant="false"
+12-->D:\AndroidStudioProjects\Notebook\vault\src\main\AndroidManifest.xml:7:9-29
+13        dist:title="@string/title_vault" >
+13-->D:\AndroidStudioProjects\Notebook\vault\src\main\AndroidManifest.xml:8:9-41
+14        <dist:delivery>
+14-->D:\AndroidStudioProjects\Notebook\vault\src\main\AndroidManifest.xml:9:9-11:25
+15            <dist:on-demand />
+15-->D:\AndroidStudioProjects\Notebook\vault\src\main\AndroidManifest.xml:10:13-31
+16        </dist:delivery>
+17
+18        <dist:fusing dist:include="true" />
+18-->D:\AndroidStudioProjects\Notebook\vault\src\main\AndroidManifest.xml:13:9-44
+18-->D:\AndroidStudioProjects\Notebook\vault\src\main\AndroidManifest.xml:13:22-41
+19    </dist:module>
+20
+21    <application
+21-->D:\AndroidStudioProjects\Notebook\vault\src\main\AndroidManifest.xml:16:5-23:19
+22        android:debuggable="true"
+23        android:testOnly="true" >
+24        <activity
+24-->D:\AndroidStudioProjects\Notebook\vault\src\main\AndroidManifest.xml:17:9-19:39
+25            android:name="tech.danielwaiguru.vault.presentation.views.VaultActivity"
+25-->D:\AndroidStudioProjects\Notebook\vault\src\main\AndroidManifest.xml:18:13-61
+26            android:exported="true"
+26-->D:\AndroidStudioProjects\Notebook\vault\src\main\AndroidManifest.xml:19:13-36
+27            android:splitName="vault" />
+28        <activity
+28-->D:\AndroidStudioProjects\Notebook\vault\src\main\AndroidManifest.xml:20:9-22:39
+29            android:name="tech.danielwaiguru.vault.presentation.views.AuthActivity"
+29-->D:\AndroidStudioProjects\Notebook\vault\src\main\AndroidManifest.xml:21:13-60
+30            android:exported="true"
+30-->D:\AndroidStudioProjects\Notebook\vault\src\main\AndroidManifest.xml:22:13-36
+31            android:splitName="vault" />
+32    </application>
+33
+34</manifest>

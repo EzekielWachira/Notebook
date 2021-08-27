@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "D:\\AndroidStudioProjects\\Notebook\\vault\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_auth.xml",
+        "source": "D:\\AndroidStudioProjects\\Notebook\\vault\\src\\main\\res\\layout\\activity_auth.xml"
+    },
+    {
+        "merged": "D:\\AndroidStudioProjects\\Notebook\\vault\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_vault.xml",
+        "source": "D:\\AndroidStudioProjects\\Notebook\\vault\\src\\main\\res\\layout\\activity_vault.xml"
+    }
+]

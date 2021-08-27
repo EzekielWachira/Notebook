@@ -23,14 +23,14 @@ import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
 import org.junit.Test
 import tech.danielwaiguru.notebook.base.BaseViewModelTest
-import tech.danielwaiguru.notebook.data.repository.NoteRepositoryImpl
 import tech.danielwaiguru.notebook.domain.model.Note
+import tech.danielwaiguru.notebook.domain.repository.NoteRepository
 import tech.danielwaiguru.notebook.presentation.viewmodels.AddNoteViewModel
 import java.util.*
 
 class AddNoteViewModelTest : BaseViewModelTest() {
     private lateinit var addNoteViewModel: AddNoteViewModel
-    private val noteRepository: NoteRepositoryImpl = mock()
+    private val noteRepository: NoteRepository = mock()
 
     @Before
     fun setup() {
@@ -45,4 +45,5 @@ class AddNoteViewModelTest : BaseViewModelTest() {
         addNoteViewModel.saveNote(dummyNote)
         verify(noteRepository).insertNote(dummyNote)
     }
+
 }

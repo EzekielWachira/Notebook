@@ -1,0 +1,5 @@
+int dimen title_size 0x7e010000
+int drawable fingerprint 0x7e020000
+int layout activity_auth 0x7e030000
+int layout activity_vault 0x7e030001
+int string vault_title 0x7e040000
